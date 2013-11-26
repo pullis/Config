@@ -8,8 +8,8 @@ from xml.etree import ElementTree as etree
 auth_handler = urllib.request.HTTPBasicAuthHandler()
 auth_handler.add_password(realm='New mail feed',
                           uri='https://mail.google.com/',
-                          user= 'mika.lehtimaki1@gmail.com',
-                          passwd= 'a29e26d34f')
+                          user= 'username',
+                          passwd= 'password')
 opener = urllib.request.build_opener(auth_handler)
 # ...and install it globally so it can be used with urlopen.
 urllib.request.install_opener(opener)
