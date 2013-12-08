@@ -9,14 +9,18 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
 flavor=${1:-bar}
 
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
 bspc config top_padding $PANEL_HEIGHT
-bspc control --put-status
+
+bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 clock -sf 'S%a %H:%M' > "$PANEL_FIFO" &
 
 case "$flavor" in
     bar)
-        cat "$PANEL_FIFO" | panel_bar | bar &
+        cat "$PANEL_FIFO" | /home/rolle/Uusi/panel_bar | bar &
         ;;
     dzen2)
         . panel_colors

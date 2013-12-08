@@ -1,14 +1,14 @@
 #! /bin/sh
 
 #if [ -e "$BSPWM_TREE" ] ; then
-#        bspc restore -T "$BSPWM_TREE" -H "$BSPWM_HISTORY" -S "$BSPWM_STACK"
-#         rm "$BSPWM_TREE" "$BSPWM_HISTORY" "$BSPWM_STACK"
+# bspc restore -T "$BSPWM_TREE" -H "$BSPWM_HISTORY" -S "$BSPWM_STACK"
+# rm "$BSPWM_TREE" "$BSPWM_HISTORY" "$BSPWM_STACK"
 #fi
 
-FIRST_DESK_MAIN=i
-REMAINING_DESKS_MAIN="ii iii iv v vi vii viii ix x"
-FIRST_DESK_SECONDARY=I
-REMAINING_DESKS_SECONDARY="II III IV V VI VII VIII IX X"
+FIRST_DESK_MAIN=EKA
+REMAINING_DESKS_MAIN="II III IV V VI VII"
+FIRST_DESK_SECONDARY=2
+REMAINING_DESKS_SECONDARY="test"
 
 MONITORS_ASSOCIATED=`bspc query -M | wc -l`
 if [[ -z `xrandr | grep " connected" | grep 'VGA'` ]]; then
@@ -54,4 +54,4 @@ rulc -a 'class=="Conky"' 'sticky=on,manage=off,lower=on'
 rulc -a 'class=="astime"' 'sticky=on'
 rulc -a 'class=="feh"' 'floating=on,manage=off'
 
-/home/rolle/.config/bspwm/panel/panel &
+#/home/rolle/Uusi/panel &

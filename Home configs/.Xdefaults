@@ -9,7 +9,7 @@ urxvt*background: rgba:0000/0000/0200/c800
 URxvt.geometry: 140x25
 
 URxvt.imLocale: fi_FI.UTF-8
-URxvt*font: xft:Source Code Pro:pixelsize=12:antialias=true:hinting=true
+URxvt*font: xft:termsyn:pixelsize=12:antialias=true:hinting=true #Source Code Pro:pixelsize=12
     URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=11:antialias=true:hinting=true
     URxvt.letterSpace: -1
     URxvt.iconFile: /usr/share/icons/elementary/apps/32/terminal.svg

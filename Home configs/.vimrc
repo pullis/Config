@@ -2,6 +2,8 @@
 "yleiset asetukset
 "----------------------------------------------------------------------
 
+" Vim Colorscheme ~.vim kansioon
+
 set nocompatible                  " käytä vim, ei vi
 set encoding=utf-8                " aseta tiedoston encoodaus
 syntax on                         " color syntax on
@@ -34,10 +36,10 @@ set incsearch                     " incremental searching
 set ignorecase                    " älä välitä kirjainkoosta haettaessa
 set smartcase                     " ... jollei ole ainakin 1 iso kirjain
 set cul                           " väritä nykyinen rivi
-"hi CursorLine term=none cterm=none ctermbg=3  " aseta väri
+"hi CursorLine term=none cterm=none ctermbg=3  " nykyisen rivin värityksen väri
 
 "-----------------------------------------------------------------------
-" GUI
+" GUI, vain gvim
 "-----------------------------------------------------------------------
 
 set guioptions-=T                " poista työkalurivi näkyvistä
