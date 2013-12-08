@@ -1,27 +1,13 @@
-#export LANG="ja_JP.UTF-8"
-#archey
-#/home/rolle/thecat.sh
-
 # Alias
 
-alias osu='LANG=ja_JP.UTF-8 /opt/osu/osulauncher ao=alsa'
+alias osu='/opt/osu/osulauncher ao=alsa'
 alias trc="transmission-remote-cli"
 alias td="transmission-daemon"
-alias killtrc="killall transmission-daemon"
+alias killtd="killall transmission-daemon"
 alias rclua="vim /home/rolle/.config/awesome/rc.lua"
 alias winesteam="/home/rolle/Desktop/Steam.desktop"
-alias steam="steam steam://open/console"
-alias handbrake="ghb"
-alias näppäimet="vim /home/rolle/bspwm/sxhkdrc"
 
 autoload -U compinit promptinit
-compinit
-promptinit
-
-# This will set the default prompt to the walters theme
-prompt walters
-
-autoload -U colors && colors
 
 # Shellin ulkoasu
 PROMPT="%}$fg[white] 
@@ -30,13 +16,12 @@ PROMPT="%}$fg[white]
 PS2=$' %{$fg[red]%}|>%{$reset_color%} '
 
 # Autostart X
-#[[ $TTY == "/dev/tty1" ]] && exec startx
+[[ $TTY == "/dev/tty1" ]] && exec startx
 
 # Näppiksen asetukset
 typeset -A key
 
 key[Home]=${terminfo[khome]}
-
 key[End]=${terminfo[kend]}
 key[Insert]=${terminfo[kich1]}
 key[Delete]=${terminfo[kdch1]}

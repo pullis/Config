@@ -4,7 +4,6 @@
 #
 # Executed by startx (run your window manager from here)
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-#### ROLLE ####
 
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
   for f in /etc/X11/xinit/xinitrc.d/*; do
@@ -15,29 +14,28 @@ fi
 
 setxkbmap fi
 xrandr "--output DVI-D-0 --primary" 
-xinput --set-prop 8 'Device Accel Constant Deceleration' 4 &
-xsetroot -cursor_name left_ptr
-#xset +fp /usr/share/fonts/local
-#xset fp rehash
-#xbindkeys 
+xinput --set-prop 8 'Device Accel Constant Deceleration' 9 &
+xsetroot -cursor_name left_ptr  
+xset +fp /usr/share/fonts/local 
+xset fp rehash                  
 
-mpd & 
+# Automaattisesti käynnistettävät ohjelmat
+mpd &
+dropboxd &
 compton &
 /home/rolle/script/tausta.sh &
-### Desktop enviroments & Window managers ###
+tint2 -c /home/rolle/script/tint2 &
+conky &
+xbindkeys &
+sxhkd &
+
+#Window managerit and työpöytä ympäristöt
 
 #exec gnome-session
 #exec startkde
 #exec startxfce4
-exec awesome 
+#exec awesome 
 
-#########################
-#                       #
-#        bspwm          #
-#                       #
-#########################   
-
-#sxhkd &
-#[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
-#mkfifo "$PANEL_FIFO"
-#exec bspwm -s "$PANEL_FIFO" - p W
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+exec bspwm -c /home/rolle/.config/bspwm/bspwmrc -s "$PANEL_FIFO" -p W
