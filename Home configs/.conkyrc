@@ -63,8 +63,8 @@ TEXT
 #${color7}${hr}${color}
 ${color6}${font GE Inspira:pixelsize=100}${alignc}${time %H:%M}${color}
 ${font Open Sans Light:size=15}System Info
-${font Open Sans Light:pixelsize=11}Arch Linux ${color1}$kernel${color}${alignr}Updates  available -  ${color1}${execi 700 pacman -Qu | wc -l}
-${font Open Sans Light:pixelsize=11}Uptime ${color1}$uptime${alignr}${color}New emails: ${color1}${execi 300 ~/script/gmail.py}
+${font Open Sans Light:pixelsize=11}Arch Linux ${color1}$kernel${color}${alignr}
+${font Open Sans Light:pixelsize=11}Uptime ${color1}$uptime${alignr}${color}
 
 ${color}${font Open Sans Light:pixelsize=11}CPU 1: ${color1}${alignc}${freq_g 0} ${color1}Ghz ${color2}${alignr}${cpu cpu0}${color1}%
 ${color}${font Open Sans Light:pixelsize=11}CPU 2: ${color1}${alignc}${freq_g 1} ${color1}Ghz ${color2}${alignr}${cpu cpu1}${color1}%
@@ -74,25 +74,22 @@ ${alignr}${loadgraph 50,345 FF8800 FF8800 -l}
 ${color}${font Open Sans Light:pixelsize=11}RAM used: ${color3}${alignc 11}${mem}
 ${color}${font Open Sans Light:pixelsize=11}TOTAL: ${color3}${alignc 11}${memmax}
 ${font Open Sans Light:pixelsize=11}${color1}CPU TEMP: ${color3}${alignc 13}${execp sensors coretemp-isa-0000 | grep 'Core 0' | cut -c16-17} ${color1}°C${color2} ${color3}
-${font Open Sans Light:pixelsize=11}${color1}GPU TEMP: ${color3}${alignc -20}${nvidia temp} ${color1}°C${color2} ${color3}\
+${font Open Sans Light:pixelsize=11}${color1}GPU TEMP: ${color3}${alignc -27}${nvidia temp} ${color1}°C${color2} ${color3}\
 ${font Open Sans Light:pixelsize=11}${color}${alignr}${loadavg}
 
 ${font Open Sans Light:pixelsize=15}HDD:
 ${font Open Sans Light:pixelsize=11}Root ${alignc -38}${color8}${fs_used /}${color} /${color1} ${fs_size /} ${color}${alignr}${fs_used_perc /}% used 
 ${font Open Sans Light:pixelsize=11}Home ${alignc -36}${color8}${fs_used /home}${color} /${color1} ${fs_size /home} ${color}${alignr 3}${fs_used_perc /home}% used
 ${font Open Sans Light:pixelsize=11}Var ${alignc -36}${color8}${fs_used /var}${color} /${color1} ${fs_size /var} ${color}${alignr 3}${fs_used_perc /var}% used
-${font Open Sans Light:pixelsize=11}Linux Omat ${alignc -34}${color8}${fs_used /media/sdb3}${color} /${color1} ${fs_size /media/sdb3} ${color}${alignr 3}${fs_used_perc /media/sdb3}% used
-${font Open Sans Light:pixelsize=11}3Tb levy ${alignc -34}${color8}${fs_used /media/sdc1}${color} /${color1} ${fs_size /media/sdc1} ${color}${alignr 3}${fs_used_perc /media/sdc1}% used
-${font Open Sans Light:pixelsize=11}Win C: ${alignc -36}${color8}${fs_used /media/sdb1}${color} /${color1} ${fs_size /media/sdb1} ${color}${alignr 3}${fs_used_perc /media/sdb1}% used
-${font Open Sans Light:pixelsize=11}Win F: ${alignc -32}${color8}${fs_used /media/sdb4}${color} /${color1} ${fs_size /media/sdb4} ${color}${alignr 3}${fs_used_perc /media/sdb4}% used
+${font Open Sans Light:pixelsize=11}Usr ${alignc -36}${color8}${fs_used /usr}${color} /${color1} ${fs_size /usr} ${color}${alignr 3}${fs_used_perc /usr}% used
+${font Open Sans Light:pixelsize=11}3Tb levy ${alignc -34}${color8}${fs_used /media/3tb}${color} /${color1} ${fs_size /media/3tb} ${color}${alignr 3}${fs_used_perc /media/3tb}% used
+${font Open Sans Light:pixelsize=11}Windows C: ${alignc -34}${color8}${fs_used /media/wintoosa}${color} /${color1} ${fs_size /media/wintoosa} ${color}${alignr 3}${fs_used_perc /media/wintoosa}% used
 ${color7}${hr}${color}
 ${if_mpd_playing}
-${alignc 33}${color4}${font Open Sans Light:pixelsize=25}${mpd_status}${color}
-${font WenQuanYi Zenhei:pixelsize=14}Title: ${color1}$mpd_title$font${color}
-#${alignr}${font WenQuanYi Zenhei:pixelsize=13}$mpd_artist
-${font WenQuanYi Zenhei:pixelsize=14}Album: ${color9}$mpd_album${color}
+${alignc}${color4}${font WenQuanYi Zenhei:pixelsize=18}MPD ${mpd_status}${color}
+${font WenQuanYi Zenhei:pixelsize=15}${mpd_artist}${color6} By ${color}${mpd_title}
 ${color7}${hr}${color}
-$endif
+${endif}
 #NETWORK STUFF
 #
 #
