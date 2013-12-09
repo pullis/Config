@@ -8,6 +8,11 @@ alias rclua="vim /home/rolle/.config/awesome/rc.lua"
 alias winesteam="/home/rolle/Desktop/Steam.desktop"
 
 autoload -U compinit promptinit
+compinit
+promptinit
+
+# This will set the default prompt to the walters theme
+prompt walters
 
 # Shellin ulkoasu
 PROMPT="%}$fg[white] 
