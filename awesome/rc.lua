@@ -174,8 +174,8 @@ function (widget, args)
         if args["{state}"] == "Stop" then
                 return "<span color='#dfdfdf'>⮕</span> not playing anything "
         elseif args["{state}"] == "Pause" then
-                return tomato_red .. args["{Title}"].. tomato_red .. args["{Artist}"]..' '
-        else
+	        return '<span color="#FF6547">⮔</span> '.. args["{Title}"]..'<span color="#FF6347"> by </span>'.. args["{Artist}"]..' '
+	else
                 return '<span color="#FF6347">⮓</span> '.. args["{Title}"]..'<span color="#FF6347"> by </span>'.. args["{Artist}"]..' '
         end
 end, 1)
@@ -660,4 +660,5 @@ end)
 
 -- Autostart
 -- awful.util.spawn_with_shell("conky") 
+-- awful.tuil.spawn_with_shell("mpd")
 -- awful.util.spawn_with_shell("dropboxd") -- dropbox
