@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-#tty-clock urcvt asetuksilla
+#tty-clock urxvt asetuksilla
 
 export LANG=fi_FI.UTF-8
 
