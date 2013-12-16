@@ -4,5 +4,5 @@
 
 export LANG=fi_FI.UTF-8
 
-urxvt -borderLess -geometry 54x9+2800+50 -depth 32 -bg rgba:3f00/3f00/3f00/3000 -e tty-clock -sbcf %A-%B-%d 
+urxvt -borderLess -geometry 54x10+2827+50 -depth 32 -bg rgba:3f00/3f00/3f00/ee11 -e tty-clock -sbf %A-%B-%d 
 
