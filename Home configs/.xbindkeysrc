@@ -1,3 +1,4 @@
+# For the benefit of emacs users: -*- shell-script -*-
 ###########################
 # xbindkeys configuration #
 ###########################
@@ -81,7 +82,7 @@
   Alt+Mod2 + Return
 
 "firefox-aurora"
-  F7
+ Alt+F7
 
 "urxvt -e /home/rolle/sript/panel"
  Shift+F7
