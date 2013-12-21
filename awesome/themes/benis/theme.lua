@@ -4,7 +4,7 @@
 
 theme = {}
 
-theme.font          = "lemon 8"
+theme.font          = "termsyn 8" --lemon 8
 theme.font_alt      = "-*-lemon-*-*-*-*-*-*-*-*-*-*-*-*"
 
 theme.bg_normal     = "#20202f"
