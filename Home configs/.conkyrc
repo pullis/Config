@@ -1,5 +1,3 @@
-# Conky Google Now style #
- 
 # Conky settings #
 background no
 update_interval 1
@@ -18,13 +16,13 @@ own_window_type desktop
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 background yes
  
-minimum_size 345 812 # 345 712
-maximum_width 345 1024
+#minimum_size 345 812 # 345 712
+#maximum_width 345 1024
  
 # Alignment #
 alignment tr
-gap_x 58 #58
-gap_y 39 #39
+gap_x 60 #58
+gap_y 200 #39
  
 border_inner_margin 15
 border_outer_margin 0
@@ -38,7 +36,7 @@ draw_graph_borders no
 # Text settings #
 use_xft yes
 xftalpha 0
-xftfont Open Sans Light:size=11
+xftfont Termsyn:size=11
  
 override_utf8_locale yes
  
@@ -55,88 +53,63 @@ color5 CC0000
 color6 AAAAAA
 color7 DDDDDD
 color8 CC0033
-color9 CCCC66
+#color9 CCCC66
+color9 395573 #blue
 
 TEXT
 #CPU STUFF
 #
-#${color7}${hr}${color}
-${color6}${font GE Inspira:pixelsize=100}${alignc}${time %H:%M}${color}
-${font Open Sans Light:size=15}System Info
-${font Open Sans Light:pixelsize=11}Arch Linux ${color1}$kernel${color}${alignr}
-${font Open Sans Light:pixelsize=11}Uptime ${color1}$uptime${alignr}${color}
-
-${color}${font Open Sans Light:pixelsize=11}CPU 1: ${color1}${alignc}${freq_g 0} ${color1}Ghz ${color2}${alignr}${cpu cpu0}${color1}%
-${color}${font Open Sans Light:pixelsize=11}CPU 2: ${color1}${alignc}${freq_g 1} ${color1}Ghz ${color2}${alignr}${cpu cpu1}${color1}%
-${color}${font Open Sans Light:pixelsize=11}CPU 3: ${color1}${alignc}${freq_g 2} ${color1}Ghz ${color2}${alignr}${cpu cpu0}${color1}%
-${color}${font Open Sans Light:pixelsize=11}CPU 4: ${color1}${alignc}${freq_g 3} ${color1}Ghz ${color2}${alignr}${cpu cpu0}${color1}%
-${alignr}${loadgraph 50,345 FF8800 FF8800 -l}
-${color}${font Open Sans Light:pixelsize=11}RAM used: ${color3}${alignc 11}${mem}
-${color}${font Open Sans Light:pixelsize=11}TOTAL: ${color3}${alignc 11}${memmax}
-${font Open Sans Light:pixelsize=11}${color1}CPU TEMP: ${color3}${alignc 13}${execp sensors coretemp-isa-0000 | grep 'Core 0' | cut -c16-17} ${color1}°C${color2} ${color3}
-${font Open Sans Light:pixelsize=11}${color1}GPU TEMP: ${color3}${alignc -27}${nvidia temp} ${color1}°C${color2} ${color3}\
-${font Open Sans Light:pixelsize=11}${color}${alignr}${loadavg}
-
-${font Open Sans Light:pixelsize=15}HDD:
-${font Open Sans Light:pixelsize=11}Root ${alignc -38}${color8}${fs_used /}${color} /${color1} ${fs_size /} ${color}${alignr}${fs_used_perc /}% used 
-${font Open Sans Light:pixelsize=11}Home ${alignc -36}${color8}${fs_used /home}${color} /${color1} ${fs_size /home} ${color}${alignr 3}${fs_used_perc /home}% used
-${font Open Sans Light:pixelsize=11}Var ${alignc -36}${color8}${fs_used /var}${color} /${color1} ${fs_size /var} ${color}${alignr 3}${fs_used_perc /var}% used
-${font Open Sans Light:pixelsize=11}Usr ${alignc -36}${color8}${fs_used /usr}${color} /${color1} ${fs_size /usr} ${color}${alignr 3}${fs_used_perc /usr}% used
-${font Open Sans Light:pixelsize=11}3Tb levy ${alignc -34}${color8}${fs_used /media/3tb}${color} /${color1} ${fs_size /media/3tb} ${color}${alignr 3}${fs_used_perc /media/3tb}% used
-${font Open Sans Light:pixelsize=11}Windows C: ${alignc -34}${color8}${fs_used /media/wintoosa}${color} /${color1} ${fs_size /media/wintoosa} ${color}${alignr 3}${fs_used_perc /media/wintoosa}% used
-${color7}${hr}${color}
-${if_mpd_playing}
-${alignc}${color4}${font WenQuanYi Zenhei:pixelsize=18}MPD ${mpd_status}${color}
-${font WenQuanYi Zenhei:pixelsize=15}${mpd_artist}${color6} By ${color}${mpd_title}
-${color7}${hr}${color}
-${endif}
+#${goto 90}${font :size=100}${alignc}${time %H:%M}${font}
+#
+#${goto 60}${font HypatiaSansPro:weight=Regular:size=32}${alignc}${time %A, %B %d}${font}
+#
 #NETWORK STUFF
 #
 #
 ${if_existing /proc/net/route enp6s0}\
-${font Open Sans Light:size=15}Network${color}${font Open Sans Light:pixelsize=11} \\ SSID : ${wireless_essid enp6s0}[Redacted] \\ ${addr enp6s0}
+${font Cantarell:size=15}Network${color}${font Cantarell:pixelsize=11} \\ SSID : ${wireless_essid enp6s0}[Ethernet-cable] \\ ${addr enp6s0}
 ${color1}Up:${color} ${color3}${upspeed enp6s0}${color}${alignr}${color1}Down:${color} ${color3}${downspeed enp6s0}${color}
-${upspeedgraph enp6s0 75,135 FF8800 FF8800}${alignr}${downspeedgraph enp6s0 75,135 FF8800 FF8800}
+${upspeedgraph enp6s0 75,100 FF8800 FF8800}${alignr}${downspeedgraph enp6s0 75,100 FF8800 FF8800}
 ${color1}Sent:${color} ${color2}${totalup enp6s0}${color}${alignr}${color1}Received:${color} ${color2}${totaldown enp6s0}${color}
 #
 ${else}${if_existing /proc/net/route ppp0}\
-${font Open Sans Light:size=15}Network${color}${font Open Sans Light:pixelsize=11} \\ SSID : ${wireless_essid ppp0} \\ ${addr ppp0}
+${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11} \\ SSID : ${wireless_essid ppp0} \\ ${addr ppp0}
 ${color1}Up:${color} ${color3}${upspeed ppp0}${color}${alignr}${color1}Down:${color} ${color3}${downspeed ppp0}${color}
 ${upspeedgraph ppp0 75,135 FF8800 FF8800}${alignr}${downspeedgraph ppp0 75,135 FF8800 FF8800}
 ${color1}Sent:${color} ${color2}${totalup ppp0}${color}${alignr}${color1}Received:${color} ${color2}${totaldown ppp0}${color}
 #
 ${else}${if_existing /proc/net/route eth0}\
-${font Open Sans Light:size=15}Network${color}${font Open Sans Light:pixelsize=11} \\ ${addr eth0}
+${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11} \\ ${addr eth0}
 ${color1}Up:${color} ${color3}${upspeed eth0}${color}${alignr}${color1}Down:${color} ${color3}${downspeed eth0}${color}
 ${upspeedgraph eth0 75,135 FF8800 FF8800}${alignr}${downspeedgraph eth0 75,135 FF8800 FF8800}
 ${color1}Sent:${color} ${color2}${totalup eth0}${color}${alignr}${color1}Received:${color} ${color2}${totaldown eth0}${color}
 #
 ${else}${if_existing /proc/net/route eth2}\
-${font Open Sans Light:size=15}Network${color}${font Open Sans Light:pixelsize=11} \\ SSID : ${wireless_essid eth2} \\ ${addr eth2}
+${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11} \\ SSID : ${wireless_essid eth2} \\ ${addr eth2}
 ${color1}Up:${color} ${color3}${upspeed eth2}${color}${alignr}${color1}Down:${color} ${color3}${downspeed eth2}${color}
 ${upspeedgraph eth2 75,135 FF8800 FF8800}${alignr}${downspeedgraph eth2 75,135 FF8800 FF8800}
 ${color1}Sent:${color} ${color2}${totalup eth2}${color}${alignr}${color1}Received:${color} ${color2}${totaldown eth2}${color}
 #
 ${else}${if_existing /proc/net/route ppp0}\
-${font Open Sans Light:size=15}Network${color}${font Open Sans Light:pixelsize=11}
+${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11}
 ${color1}Up:${color} ${color3}${upspeed ppp0}${color}${alignr}${color1}Down:${color} ${color3}${downspeed ppp0}${color}
 ${upspeedgraph ppp0 75,135 FF8800 FF8800}${alignr}${downspeedgraph ppp0 75,135 FF8800 FF8800}
 ${color1}Sent:${color} ${color2}${totalup ppp0}${color}${alignr}${color1}Received:${color} ${color2}${totaldown ppp0}${color}
 #
 ${else}${if_existing /proc/net/route ppp1}\
-${font Open Sans Light:size=15}Network${color}${font Open Sans Light:pixelsize=11}
+${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11}
 ${color1}Up:${color} ${color3}${upspeed ppp1}${color}${alignr}${color1}Down:${color} ${color3}${downspeed ppp1}${color}
 ${upspeedgraph ppp1 75,135 FF8800 FF8800}${alignr}${downspeedgraph ppp1 75,135 FF8800 FF8800}
 ${color1}Sent:${color} ${color2}${totalup ppp1}${color}${alignr}${color1}Received:${color} ${color2}${totaldown ppp1}${color}
 #
 ${else}${if_existing /proc/net/route usb0}\
-${font Open Sans Light:size=15}Network${color}${font Open Sans Light:pixelsize=11}
+${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11}
 ${color1}Up:${color} ${color3}${upspeed usb0}${color}${alignr}${color1}Down:${color} ${color3}${downspeed usb0}${color}
 ${upspeedgraph usb0 75,135 FF8800 FF8800}${alignr}${downspeedgraph usb0 75,135 FF8800 FF8800}
 ${color1}Sent:${color} ${color2}${totalup usb0}${color}${alignr}${color1}Received:${color} ${color2}${totaldown usb0}${color}
 #
 ${else}${if_existing /proc/net/route usb1}\
-${font Open Sans Light:size=15}Network${color}${font Open Sans Light:pixelsize=11}
+${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11}
 ${color1}Up:${color} ${color3}${upspeed usb1}${color}${alignr}${color1}Down:${color} ${color3}${downspeed usb1}${color}
 ${upspeedgraph usb1 75,135 FF8800 FF8800}${alignr}${downspeedgraph usb1 75,135 FF8800 FF8800}
 ${color1}Sent:${color} ${color2}${totalup usb1}${color}${alignr}${color1}Received:${color} ${color2}${totaldown usb1}${color}
