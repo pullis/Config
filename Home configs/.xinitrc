@@ -24,18 +24,19 @@ mpd &
 dropboxd &
 compton &
 /home/rolle/script/tausta.sh &
-tint2 -c /home/rolle/script/tint2 &
+/home/rolle/script/kello &
 conky &
 xbindkeys &
-sxhkd &
+#sxhkd &
+#xflux -l 61.497978 -g 23.764931  &
 
 #Window managerit and työpöytä ympäristöt
 
 #exec gnome-session
 #exec startkde
 #exec startxfce4
-#exec awesome 
+exec awesome 
 
-[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
-mkfifo "$PANEL_FIFO"
-exec bspwm -c /home/rolle/.config/bspwm/bspwmrc -s "$PANEL_FIFO" -p W
+#[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+#mkfifo "$PANEL_FIFO"
+#exec bspwm -c /home/rolle/.config/bspwm/bspwmrc -s "$PANEL_FIFO" -p W

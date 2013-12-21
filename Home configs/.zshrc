@@ -6,6 +6,11 @@ alias td="transmission-daemon"
 alias killtd="killall transmission-daemon"
 alias rclua="vim /home/rolle/.config/awesome/rc.lua"
 alias winesteam="/home/rolle/Desktop/Steam.desktop"
+alias vi="vim"
+alias desura="home/rolle/.desura/desura/desura"
+alias sandwich="make-me-a-sandwich"
+alias sl=""sl""
+alias kirakira="WINEPREFIX=/home/rolle/.win wine /home/rolle/.win/drive_c/Program\ Files/Kira\ Kira/BGI.exe"
 
 autoload -U compinit promptinit
 compinit
