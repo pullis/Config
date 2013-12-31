@@ -16,6 +16,22 @@ while true; do
   #XINERAMA_SCREEN=1 feh -qr --bg-scale $SRC/$KNIMI2 2> /dev/null
   xrdb -merge ~/wp/XDEFAULTS/${KNIMI}.Xres
   source ~/wp/COLORS/${KNIMI}.colors
+  NUMTERMINALS=`ls -l /dev/pts | wc -l`
+  NUM=$((${NUMTERMINALS}-3))
+  #echo "Open terminals: $NUM"
+  for cur in {0..15}
+  do
+	TMP="COLOR$cur"
+	for konsoli in /dev/pts/* 
+	do
+		KON="$konsoli"
+  		p2="/dev/pts/ptmx"
+		if [ "$p2" != "${KON}" ]
+	       	then
+			echo -ne "\033]4;${cur};${!TMP}\007" > ${konsoli}
+		fi
+	done
+  done
   ln -sf ${SRC}${KNIMI} ~/.currentBG
   sleep 3m
 done
