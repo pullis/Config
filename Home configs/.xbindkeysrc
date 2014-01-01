@@ -86,3 +86,6 @@
 
 "urxvt -e /home/rolle/sript/panel"
  Shift+F7
+
+"mpc stop"
+ Alt+F4
