@@ -28,9 +28,8 @@ compton &
 conky &
 xbindkeys &
 #sxhkd &
-#xflux -l 61.497978 -g 23.764931  &
 
-#Window managerit and työpöytä ympäristöt
+# Select what WM or DE to boot
 
 #exec gnome-session
 #exec startkde
