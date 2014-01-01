@@ -1,8 +1,10 @@
 #!/bin/bash
-# Randomly change wallpaper in root window with feh
+# Randomly change wallpaper with feh and change terminal colors to match it
+# Takes colors from second screen
+
 
 # Directories to search for images
-# (errors from nonexistent directories will be ignored)
+# (errors go to ~/script/VIRHE)
 SRC="/media/3tb/random/wallpaper/Wallpapers/"
 
 while true; do
