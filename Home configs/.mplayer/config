@@ -2,7 +2,9 @@
 
 # use vdpau for video output, use a x11 as fallback
 vo=vdpau,xv
-#vc=ffh264vdpau,ffmpeg12vdpau,ffodivxvdpau,ffwmv3vdpau,ffvc1vdpau,
+vc=ffmpeg12vdpau,ffodivxvdpau,ffwmv3vdpau,ffvc1vdpau,
+autoq=100
+vf=pp=ac,hqdn3d
 
 # use alsa for audio output, choose oss4 as fallback
 ao=alsa
@@ -10,12 +12,27 @@ ao=alsa
 ## Enable stylized subtitles
 ass=yes
 embeddedfonts=yes
+double="yes"	#double buffering(recommended for subtitles)
+
+#font="FreeSans:style=Bold"
+# font="FreeSans:style=BoldOblique"
+# font="FreeSans:style=Medium"
+# font="FreeSans:style=Oblique"
+# font="Verdana:style=Bold"
+# font="FreeUniversal:style=Bold"
+# With Fontconfig, this option determines the Fontconfig font pattern.
 
 # multithreaded decoding of H264/MPEG-1/2 (valid: 1-8)
-lavdopts=threads=4
+lavdopts=threads=8
 
 # scale the subtitles to the 3% of the screen size
 subfont-text-scale = 3
+
+# Display English subtitles if available.
+slang=English,eng,en 
+
+# Play Japanese audio tracks if available.
+alang=Japanese,jpn,ja 
 
 # never use font config
 nofontconfig = 1
