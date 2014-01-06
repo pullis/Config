@@ -14,14 +14,6 @@ ass=yes
 embeddedfonts=yes
 double="yes"	#double buffering(recommended for subtitles)
 
-#font="FreeSans:style=Bold"
-# font="FreeSans:style=BoldOblique"
-# font="FreeSans:style=Medium"
-# font="FreeSans:style=Oblique"
-# font="Verdana:style=Bold"
-# font="FreeUniversal:style=Bold"
-# With Fontconfig, this option determines the Fontconfig font pattern.
-
 # multithreaded decoding of H264/MPEG-1/2 (valid: 1-8)
 lavdopts=threads=8
 
