@@ -21,7 +21,7 @@ background yes
  
 # Alignment #
 alignment tr
-gap_x 60 #58
+gap_x 53 #58
 gap_y 200 #39
  
 border_inner_margin 15
@@ -67,56 +67,16 @@ TEXT
 #
 #
 ${if_existing /proc/net/route enp6s0}\
-${font Cantarell:size=15}Network${color}${font Cantarell:pixelsize=11} \\ SSID : ${wireless_essid enp6s0}[Ethernet-cable] \\ ${addr enp6s0}
+${font Sans:size=13}Network${color}${font Open Sans:pixelsize=11} \\ SSID : ${wireless_essid enp6s0}[Ethernet-cable] \\ ${addr enp6s0}
 ${color1}Up:${color} ${color3}${upspeed enp6s0}${color}${alignr}${color1}Down:${color} ${color3}${downspeed enp6s0}${color}
 ${upspeedgraph enp6s0 75,100 FF8800 FF8800}${alignr}${downspeedgraph enp6s0 75,100 FF8800 FF8800}
-${color1}Sent:${color} ${color2}${totalup enp6s0}${color}${alignr}${color1}Received:${color} ${color2}${totaldown enp6s0}${color}
-#
+${color6}Sent:${color6} ${color6}${totalup enp6s0}${color}${alignr}${color6}Received:${color} ${color6}${totaldown enp6s0}${color}
 ${else}${if_existing /proc/net/route ppp0}\
-${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11} \\ SSID : ${wireless_essid ppp0} \\ ${addr ppp0}
+${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11} \\ SSID 4G Tikku \\ ${addr ppp0}
 ${color1}Up:${color} ${color3}${upspeed ppp0}${color}${alignr}${color1}Down:${color} ${color3}${downspeed ppp0}${color}
 ${upspeedgraph ppp0 75,135 FF8800 FF8800}${alignr}${downspeedgraph ppp0 75,135 FF8800 FF8800}
 ${color1}Sent:${color} ${color2}${totalup ppp0}${color}${alignr}${color1}Received:${color} ${color2}${totaldown ppp0}${color}
-#
-${else}${if_existing /proc/net/route eth0}\
-${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11} \\ ${addr eth0}
-${color1}Up:${color} ${color3}${upspeed eth0}${color}${alignr}${color1}Down:${color} ${color3}${downspeed eth0}${color}
-${upspeedgraph eth0 75,135 FF8800 FF8800}${alignr}${downspeedgraph eth0 75,135 FF8800 FF8800}
-${color1}Sent:${color} ${color2}${totalup eth0}${color}${alignr}${color1}Received:${color} ${color2}${totaldown eth0}${color}
-#
-${else}${if_existing /proc/net/route eth2}\
-${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11} \\ SSID : ${wireless_essid eth2} \\ ${addr eth2}
-${color1}Up:${color} ${color3}${upspeed eth2}${color}${alignr}${color1}Down:${color} ${color3}${downspeed eth2}${color}
-${upspeedgraph eth2 75,135 FF8800 FF8800}${alignr}${downspeedgraph eth2 75,135 FF8800 FF8800}
-${color1}Sent:${color} ${color2}${totalup eth2}${color}${alignr}${color1}Received:${color} ${color2}${totaldown eth2}${color}
-#
-${else}${if_existing /proc/net/route ppp0}\
-${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11}
-${color1}Up:${color} ${color3}${upspeed ppp0}${color}${alignr}${color1}Down:${color} ${color3}${downspeed ppp0}${color}
-${upspeedgraph ppp0 75,135 FF8800 FF8800}${alignr}${downspeedgraph ppp0 75,135 FF8800 FF8800}
-${color1}Sent:${color} ${color2}${totalup ppp0}${color}${alignr}${color1}Received:${color} ${color2}${totaldown ppp0}${color}
-#
-${else}${if_existing /proc/net/route ppp1}\
-${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11}
-${color1}Up:${color} ${color3}${upspeed ppp1}${color}${alignr}${color1}Down:${color} ${color3}${downspeed ppp1}${color}
-${upspeedgraph ppp1 75,135 FF8800 FF8800}${alignr}${downspeedgraph ppp1 75,135 FF8800 FF8800}
-${color1}Sent:${color} ${color2}${totalup ppp1}${color}${alignr}${color1}Received:${color} ${color2}${totaldown ppp1}${color}
-#
-${else}${if_existing /proc/net/route usb0}\
-${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11}
-${color1}Up:${color} ${color3}${upspeed usb0}${color}${alignr}${color1}Down:${color} ${color3}${downspeed usb0}${color}
-${upspeedgraph usb0 75,135 FF8800 FF8800}${alignr}${downspeedgraph usb0 75,135 FF8800 FF8800}
-${color1}Sent:${color} ${color2}${totalup usb0}${color}${alignr}${color1}Received:${color} ${color2}${totaldown usb0}${color}
-#
-${else}${if_existing /proc/net/route usb1}\
-${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11}
-${color1}Up:${color} ${color3}${upspeed usb1}${color}${alignr}${color1}Down:${color} ${color3}${downspeed usb1}${color}
-${upspeedgraph usb1 75,135 FF8800 FF8800}${alignr}${downspeedgraph usb1 75,135 FF8800 FF8800}
-${color1}Sent:${color} ${color2}${totalup usb1}${color}${alignr}${color1}Received:${color} ${color2}${totaldown usb1}${color}
-#
-${else}
-Network disconnected
-${color6}Connect to a network to see statistics${color}
-${voffset 75}
-${endif}${endif}${endif}${endif}${endif}${endif}${endif}${voffset -30}
-
+${endif}${endif}
+${font Sans:size=13}Temps
+${font Open Sans:pixelsize=11}CPU:${color4}${goto 335}${execp sensors coretemp-isa-0000 | grep 'Core 0' | cut -c16-17}${color1} °C${color}
+${font Open Sans:pixelsize=11}GPU:${color4}${goto 335}${nvidia temp}${color1} °C${color} 
