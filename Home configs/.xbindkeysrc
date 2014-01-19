@@ -88,4 +88,10 @@
  Shift+F7
 
 "mpc stop"
- Alt+F4
+ Alt+Mod2 + F4
+
+"firefox-nightly -p Nightly"
+Alt+F8
+
+
+
