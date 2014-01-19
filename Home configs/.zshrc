@@ -14,6 +14,7 @@ alias winesteam="/home/rolle/Desktop/Steam.desktop"
 alias hiiri="xinput --set-prop 8 'Device Accel Constant Deceleration'"
 alias dc4g="sudo mmcli -m 0 --simple-disconnect"
 alias 4g="sudo ~/script/4gtikku.sh"
+alias firefox-nightly="firefox-nightly -p Nightly"
 
 # Autostart X
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
