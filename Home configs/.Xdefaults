@@ -1,0 +1,97 @@
+## .Xdefaults
+
+#xvt*.transparent: true
+#! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
+#URxvt*.shading: 110
+
+#urxvt*depth: 32
+#urxvt*background: rgba:0000/0000/0200/c800
+URxvt.geometry: 110x30
+
+URxvt.imLocale: fi_FI.UTF-8
+URxvt*font: xft:Dina:pixelsize=10:antialias=true:hinting=true 
+    URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=11:antialias=true:hinting=true
+    URxvt.url-launcher:      /usr/bin/firefox-aurora
+    URxvt.matcher.button:   1
+    URxvt.urlLauncher:  xdg-open
+    URxvt.matcher.button:   1
+    URxvt.xftAntialias: true
+    URxvt.perl-ext-common:  default,tabbedex
+    URxvt.rotate-colors.files: ~/.Xresources,~/light.txt,~/dark.txt
+    URxvt.keysym.M-C-n:   perl:rotate-colors:next
+    URxvt.keysym.M-C-p:   perl:rotate-colors:prev
+    URxvt.perl-lib /home/rolle/urxvt-perls/
+    URxvt.scrollstyle:  plain
+    URxvt.scrollBar: false   
+    URxvt.secondaryScreen : true
+    URxvt.scrollTtyOutput   :   false
+    URxvt.scrollWithBuffer  :   true
+    URxvt.scrollTtyKeypress :   true
+#    URxvt.tabbed.tabbar-fg: 15
+#    URxvt.tabbed.tabbar-bg: 0
+    URxvt.tabbed.tab-fg:    15
+    URxvt.tabbed.tab-bg:    8
+    URxvt.cursorBlink:  true
+    URxvt.cursorUnderline:  true
+
+!Font
+#URxvt*font:             	-*-tamsyn-medium-r-normal-*-12-87-100-100-c-60-iso8859-1
+#URxvt*boldFont:         	-*-tamsyn-bold-r-normal-*-12-87-100-100-c-60-iso8859-1
+
+URxvt*background: #2C2C2C
+URxvt*foreground: #979797
+
+# Colors
+!black
+#*color0: #333333
+#*color8: #3D3D3D
+!!red
+#*color1: #8C4665
+#*color9: #BF4D80
+!!green
+#*color2:  #778899
+#*color10: #778899
+!!yellow
+#*color3: #7E5D7A
+#*color11: #A270A3
+!blue
+#*color4: #395573
+#*color12: #477AB3
+!!magenta
+#*color5: #5E468C
+#*color13: #7E62B3
+!!cyan
+#*color6: #31658C
+#*color14: #6096BF
+!!white
+#*color7: #899CA1
+#*color15: #C0C0C0
+
+# Omat värit
+!black
+*color0:	#3F3F3F
+*color8:	#709080
+!red
+*color1:	#705050
+*color9:	#DCA3A3
+!green
+*color2:	#60B48A
+*color10:	#72D5A3
+!yellow 
+*color3:	#DFAF8F
+*color11:	#F0DFAF
+!blue
+*color4:	#9AB8D7
+*color12:	#94BFF3
+!magenta
+*color5:	#DC8CC3
+*color13:	#EC93D3
+!cyan
+*color6:	#8CD0D3
+*color14:	#93E0E3
+!white
+*color7:	#FFFFFF
+*color15:	#DCDCDC
+
+
+
