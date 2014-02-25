@@ -1,85 +1,98 @@
---[[                                        ]]--
-----                                          -
-----    Blackburn Awesome WM 3.5.+ theme      --
-----       github.com/copycat-killer          --
-----                                          -
-----[[                                      ]]--
+--[[
+                                     
+     Blackburn Awesome WM config 2.0 
+     github.com/copycat-killer       
+                                     
+--]]
 
+local awful = require("awful")
+awful.util = require("awful.util")
 
+--{{{ Main
 theme = {}
 
-themes_dir                                  = os.getenv("HOME") .. "/.config/awesome/themes/blackburn"
---theme.wallpaper                             = themes_dir .. "/wall.png"
+home          = os.getenv("HOME")
+config        = awful.util.getdir("config")
+shared        = "/usr/share/awesome"
+if not awful.util.file_readable(shared .. "/icons/awesome16.png") then
+    shared    = "/usr/share/local/awesome"
+end
+sharedicons   = shared .. "/icons"
+sharedthemes  = shared .. "/themes"
+themes        = config .. "/themes"
+themename     = "/blackburn"
+if not awful.util.file_readable(themes .. themename .. "/theme.lua") then
+       themes = sharedthemes
+end
+themedir      = themes .. themename
 
-theme.font                                  = "DejaVu Sans 9"
-theme.fg_normal                             = "#aaaaaa"
-theme.fg_focus                              = "#d79d38"
-theme.fg_urgent                             = "#CC9393"
-theme.bg_normal                             = "#000000"
-theme.bg_focus                              = "#000000"
-theme.bg_urgent                             = "#2a1f1e"
-theme.border_width                          = "0"
-theme.border_normal                         = "#101010"
-theme.border_focus                          = "#FFFFFF"
-theme.border_marked                         = "#CC9393"
---theme.border_width = "2"
---theme.border_normal = "#222222"
---theme.border_focus = "#A6000A"
---theme.border_marked = "#91231c"
-theme.titlebar_bg_focus                     = "#FFFFFF"
-theme.titlebar_bg_normal                    = "#FFFFFF"
-theme.taglist_fg_focus                      = "#f6784f"
-theme.tasklist_bg_focus                     = "#000000"
-theme.tasklist_fg_focus                     = "#f6784f"
-theme.textbox_widget_margin_top             = 1
-theme.notify_fg                             = theme.fg_normal
-theme.notify_bg                             = theme.bg_normal
-theme.notify_border                         = theme.border_focus
-theme.awful_widget_height                   = 14
-theme.awful_widget_margin_top               = 2
-theme.mouse_finder_color                    = "#CC9393"
-theme.menu_height                           = "24"
-theme.menu_width                            = "190"
+wallpaper1    = themedir .. "/wall.png"
+wallpaper2    = themedir .. "/background.png"
+wallpaper3    = sharedthemes .. "/zenburn/zenburn-background.png"
+wallpaper4    = sharedthemes .. "/default/background.png"
+wpscript      = home .. "/.wallpaper"
 
-theme.menu_submenu_icon                     = themes_dir .. "/icons/submenu.png"
-theme.taglist_squares_sel                   = themes_dir .. "/icons/square_sel.png"
-theme.taglist_squares_unsel                 = themes_dir .. "/icons/square_unsel.png"
+if awful.util.file_readable(wallpaper1) then
+  theme.wallpaper = wallpaper1
+elseif awful.util.file_readable(wallpaper2) then
+  theme.wallpaper = wallpaper2
+elseif awful.util.file_readable(wpscript) then
+  theme.wallpaper_cmd = { "sh " .. wpscript }
+elseif awful.util.file_readable(wallpaper3) then
+  theme.wallpaper = wallpaper3
+else
+  theme.wallpaper = wallpaper4
+end
+--}}}
+theme.topbar_path                   = "png:" .. themedir .. "/icons/topbar/"
 
-theme.layout_tile                           = themes_dir .. "/icons/tile.png"
-theme.layout_tileleft                       = themes_dir .. "/icons/tileleft.png"
-theme.layout_tilebottom                     = themes_dir .. "/icons/tilebottom.png"
-theme.layout_tiletop                        = themes_dir .. "/icons/tiletop.png"
-theme.layout_fairv                          = themes_dir .. "/icons/fairv.png"
-theme.layout_fairh                          = themes_dir .. "/icons/fairh.png"
-theme.layout_spiral                         = themes_dir .. "/icons/spiral.png"
-theme.layout_dwindle                        = themes_dir .. "/icons/dwindle.png"
-theme.layout_max                            = themes_dir .. "/icons/max.png"
-theme.layout_fullscreen                     = themes_dir .. "/icons/fullscreen.png"
-theme.layout_magnifier                      = themes_dir .. "/icons/magnifier.png"
-theme.layout_floating                       = themes_dir .. "/icons/floating.png"
-theme.tasklist_floating                     = ""
-theme.tasklist_maximized_horizontal         = ""
-theme.tasklist_maximized_vertical           = "" 
+theme.font                          = "Tamsyn 10.5"
+theme.taglist_font                  = "Icons 10"
+theme.fg_normal                     = "#D7D7D7"
+theme.fg_focus                      = "#F6784F"
+theme.bg_normal                     = "#060606"
+theme.bg_focus                      = "#060606"
+theme.fg_urgent                     = "#CC9393"
+theme.bg_urgent                     = "#2A1F1E"
+theme.border_width                  = "1"
+theme.border_normal                 = "#0E0E0E"
+theme.border_focus                  = "#F79372"
 
-theme.widget_mail_notify                    = themes_dir .. "/icons/mail_notify.png"
-theme.widget_no_net_notify                  = themes_dir .. "/icons/no_net_notify.png"
-theme.widget_netdown   			    = themes_dir .. "/icons/net_down.png"
-theme.widget_netup      		    = themes_dir .. "/icons/net_up.png"
+theme.taglist_fg_focus              = "#F6784F"
+theme.taglist_bg_focus              = "#060606"
+theme.tasklist_fg_focus             = "#F6784F"
+theme.tasklist_bg_focus             = "#060606"
+theme.menu_height                   = "16"
+theme.menu_width                    = "140"
 
-theme.menu_submenu_icon = "/usr/share/awesome/themes/default/submenu.png"
+theme.menu_submenu_icon             = themedir .. "/icons/submenu.png"
+theme.taglist_squares_sel           = themedir .. "/icons/square_sel.png"
+theme.taglist_squares_unsel         = themedir .. "/icons/square_unsel.png"
+theme.arrl_lr_pre                   = themedir .. "/icons/arrl_lr_pre.png"
+theme.arrl_lr_post                  = themedir .. "/icons/arrl_lr_post.png"
 
---set the spacing between tiled windows to 20px
-theme.useless_gap_width = "20"
---set the height of the lowest window of the second column to 72; setting to zero makes all the slave windows the same height
-theme.lower_window_height = "72"
---set your vertical resolution
-theme.vertical_resolution = "1080"
---set the extra vertical spacing to 8px
-theme.vertical_border = "8"
---set the extra outermost spacing to 18px
-theme.outer_padding = "18"
+theme.layout_tile                   = themedir .. "/icons/tile.png"
+theme.layout_tileleft               = themedir .. "/icons/tileleft.png"
+theme.layout_tilebottom             = themedir .. "/icons/tilebottom.png"
+theme.layout_tiletop                = themedir .. "/icons/tiletop.png"
+theme.layout_fairv                  = themedir .. "/icons/fairv.png"
+theme.layout_fairh                  = themedir .. "/icons/fairh.png"
+theme.layout_spiral                 = themedir .. "/icons/spiral.png"
+theme.layout_dwindle                = themedir .. "/icons/dwindle.png"
+theme.layout_max                    = themedir .. "/icons/max.png"
+theme.layout_fullscreen             = themedir .. "/icons/fullscreen.png"
+theme.layout_magnifier              = themedir .. "/icons/magnifier.png"
+theme.layout_floating               = themedir .. "/icons/floating.png"
 
+theme.tasklist_disable_icon         = true
+theme.tasklist_floating             = ""
+theme.tasklist_maximized_horizontal = ""
+theme.tasklist_maximized_vertical   = ""
 
-
+-- lain related
+theme.useless_gap_width             = 10
+theme.layout_uselesstile            = themedir .. "/icons/uselesstile.png"
+theme.layout_uselesstileleft        = themedir .. "/icons/uselesstileleft.png"
+theme.layout_uselesstiletop         = themedir .. "/icons/uselesstiletop.png"
 
 return theme

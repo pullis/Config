@@ -7,7 +7,7 @@ require("awful.autofocus")
 local wibox = require("wibox")
 local vicious = require("vicious")
 local daze = require("daze")
-local benis = require("benis")
+--local benis = require("benis")  --bspwm like tiling
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -53,7 +53,7 @@ home = os.getenv("HOME")
 confdir = home .. "/.config/awesome"
 scriptdir = confdir .. "/scripts/"
 themes = confdir .. "/themes"
-active_theme = themes .. "/benis"
+active_theme = themes .. "/dremora"
 beautiful.init(active_theme .. "/theme.lua")
 language = string.gsub(os.getenv("LANG"), ".utf8", "")
 
@@ -83,71 +83,51 @@ local layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "Web" , "Media", "Random", "Steam", }, s, layouts[1])
+    tags[s] = awful.tag({ "web", "media", "stuff", "random", "steam", "term", "chat" }, s, layouts[s])
 end
 -- }}}
 
 --DAZE
 --set the layout
-awful.layout.set(daze.layout.tile, tags[1][1]) 
+--awful.layout.set(daze.layout.tile, tags[1][1]) 
 --set master window width in percentage
-awful.tag.setmwfact(0.7, tags[1][1])
+--awful.tag.setmwfact(0.7, tags[1][1])
 --set number of column windows
-awful.tag.setncol(1, tags[1][1])
+--awful.tag.setncol(1, tags[1][1])
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 
 applicationmenu = { --utilities
-  { "File Manager", "pcmanfm", "/usr/share/icons/Faenza/apps/32/thunar.png" },
-  { "Sublime Text", "subl", "/home/rolle/.config/awesome/icons/menu icons/sublime.png" },
+  { "File Manager", "pcmanfm" },
+  { "Ranger", "urxvt -e ranger" },
 }
 
 applicationmenu10 = { --system
-  { "Gparted", "kdesudo /usr/bin/gparted", "/usr/share/icons/Faenza/apps/32/gparted.png" },
-  { "VirtualBox", "VirtualBox", "/usr/share/icons/Faenza/apps/32/virtualbox.png" },
-  { "Htop", "urxvt -e htop", "/usr/share/icons/Faenza/apps/32/konsole.png" },
-  { "CPU-G", "/usr/bin/cpu-g", "/usr/share/cpu-g/data/cpu-g.png" },
+  { "Gparted", "kdesudo /usr/bin/gparted" },
+  { "System Monitor", "gnome-system-monitor" },
   { "Disk Health", "kdesudo gsmartcontrol", "/usr/share/gsmartcontrol/icon_hdd.png" },
-  { "Manage Transmission", "/usr/bin/xdg-open http://127.0.0.1:9091/transmission/web/", "/usr/share/icons/Faenza/apps/32/transmission.png" },
-  { "Manage Printer", "/usr/bin/xdg-open http://localhost:631/", "/home/rolle/.config/awesome/icons/menu icons/printer.png" }
-}
-
-applicationmenu20 = { --settings
-  { "DockbarX Preference", "dbx_preference", "/home/rolle/.config/awesome/icons/menu icons/dockbarx.png" },
-  { "Customize Look and Feel", "lxappearance", "/home/rolle/.config/awesome/icons/menu icons/lxappearance.png" },
-  { "System Settings", "systemsettings", "/home/rolle/.config/awesome/icons/menu icons/systemsettings.png" },
-  { "Nvidia X Server Settings", "kdesudo /usr/bin/nvidia-settings", "/home/rolle/.config/awesome/icons/menu icons/nvidia.png" },
+  { "Nvidia X Server settings", "kdesudo nvidia-settings" },
+  { "Transmission Web", "firefox-aurora localhost:9091" },
+--  { "CUPS", "firefox-aurora localhost: },
 }
 
 applicationsmenu30 = { --office
-  { "Libre Office", "libreoffice --writer", "/usr/share/icons/Faenza/apps/32/libreoffice-writer.png" },
-}
-
-applicationsmenu40 = { --multimedia
-  { "Handbrake", "ghb", "/home/rolle/.config/awesome/icons/menu icons/HandBrake_Icon.png" },
-  { "SimpleScreenRecorder", "simplescreenrecorder", "/home/rolle/.config/awesome/icons/menu icons/screenrecorder" },
-  { "Smplayer", "smplayer", "/usr/share/icons/Faenza/apps/22/smplayer.png" },
-  { "Spotify", "spotify", "/usr/share/icons/Faenza/apps/22/spotify.png" },
+  { "Libre Office", "libreoffice" },
 }
 
 applicationsmenu50 = { --internet
-  { "Aurora", "firefox-aurora", "/usr/share/icons/Faenza/apps/32/firefox.png" },
-  { "Chromium", "chromium", "/usr/share/icons/Faenza/apps/32/chromium-browser2.png" },
-  { "Deluge", "deluge-gtk","/usr/share/icons/Faenza/apps/32/deluge.png" },
-  { "Dropbox", "dropboxd", "/usr/share/icons/Faenza/apps/32/dropbox.png" },
-  { "Opera", "opera", "/usr/share/icons/Faenza/apps/32/opera.png" },
-  { "Pidgin", "pidgin", "/usr/share/icons/Faenza/apps/32/pidgin.png" },
-  { "Steam", "steam", "/usr/share/icons/Faenza/apps/32/steam.png" },
-  { "Steam (wine)", "/home/rolle/Desktop/Steam.desktop", "/home/rolle/.config/awesome/icons/menu icons/steam.png" },
+  { "Aurora", "firefox-aurora" },
+  { "Chromium", "chromium" },
+  { "Pidgin", "pidgin" },
+  { "Steam", "steam" },
+  { "Steam (wine)", "/home/rolle/Desktop/Steam.desktop" },
 }
 
 myappsmenu = {
   { "Utilities", applicationmenu },
   { "System", applicationmenu10 },
-  { "Settings", applicationmenu20 },
   { "Office", applicationsmenu30 },
-  { "Multimedia", applicationsmenu40 },
   { "Internet", applicationsmenu50 },
 }
 myawesomemenu = {
@@ -158,7 +138,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
 --                                    { "open terminal", terminal },
-				    { "Applications", myappsmenu }
+				   					  { "Applications", myappsmenu }
                                   }
                         })
 
@@ -387,8 +367,9 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
-    if s == 2 then right_layout:add(wibox.widget.systray()) end
-   
+    if s == 1 then right_layout:add(wibox.widget.systray()) end
+    --right_layout:add(mytextclock)
+
     --right_layout:add(mytextclock)
     --right_layout:add(mylayoutbox[s])
 
