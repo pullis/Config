@@ -17,12 +17,12 @@ own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 background yes
  
 #minimum_size 345 812 # 345 712
-#maximum_width 345 1024
+maximum_width 325 200
  
 # Alignment #
 alignment tr
-gap_x 53 #58
-gap_y 200 #39
+gap_x 40 #58
+gap_y 210 #39
  
 border_inner_margin 15
 border_outer_margin 0
@@ -71,12 +71,30 @@ ${font Sans:size=13}Network${color}${font Open Sans:pixelsize=11} \\ SSID : ${wi
 ${color1}Up:${color} ${color3}${upspeed enp6s0}${color}${alignr}${color1}Down:${color} ${color3}${downspeed enp6s0}${color}
 ${upspeedgraph enp6s0 75,100 FF8800 FF8800}${alignr}${downspeedgraph enp6s0 75,100 FF8800 FF8800}
 ${color6}Sent:${color6} ${color6}${totalup enp6s0}${color}${alignr}${color6}Received:${color} ${color6}${totaldown enp6s0}${color}
-${else}${if_existing /proc/net/route ppp0}\
-${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11} \\ SSID 4G Tikku \\ ${addr ppp0}
-${color1}Up:${color} ${color3}${upspeed ppp0}${color}${alignr}${color1}Down:${color} ${color3}${downspeed ppp0}${color}
-${upspeedgraph ppp0 75,135 FF8800 FF8800}${alignr}${downspeedgraph ppp0 75,135 FF8800 FF8800}
-${color1}Sent:${color} ${color2}${totalup ppp0}${color}${alignr}${color1}Received:${color} ${color2}${totaldown ppp0}${color}
-${endif}${endif}
+${else}${if_existing /proc/net/route wwp0s29f7u2i3}\
+${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11} \\ SSID : 4G Tikku \\ ${addr wwp0s29f7u2i3}
+${color1}Up:${color} ${color3}${upspeed wwp0s29f7u2i3}${color}${alignr}${color1}Down:${color} ${color3}${downspeed wwp0s29f7u2i3}${color}
+${upspeedgraph wwp0s29f7u2i3 75,135 FF8800 FF8800}${alignr}${downspeedgraph wwp0s29f7u2i3 75,135 FF8800 FF8800}
+${color1}Sent:${color} ${color2}${totalup wwp0s29f7u2i3}${color}${alignr}${color1}Received:${color} ${color2}${totaldown wwp0s29f7u2i3}${color}
+${else}${if_existing /proc/net/route wwan0}\
+${font Termsyn:size=15}Network${color}${font Termsyn:pixelsize=11} \\ SSID : 4G Tikku \\ ${addr wwan0}
+${color1}Up:${color} ${color3}${upspeed wwan0}${color}${alignr}${color1}Down:${color} ${color3}${downspeed wwan0}${color}
+${upspeedgraph wwan0 75,135 FF8800 FF8800}${alignr}${downspeedgraph wwan0 75,135 FF8800 FF8800}
+${color1}Sent:${color} ${color2}${totalup wwan0}${color}${alignr}${color1}Received:${color} ${color2}${totaldown wwan0}${color}
+${endif}${endif}${endif}
+
 ${font Sans:size=13}Temps
-${font Open Sans:pixelsize=11}CPU:${color4}${goto 335}${execp sensors coretemp-isa-0000 | grep 'Core 0' | cut -c16-17}${color1} °C${color}
-${font Open Sans:pixelsize=11}GPU:${color4}${goto 335}${nvidia temp}${color1} °C${color} 
+${font Open Sans:pixelsize=11}CPU:${color4}${goto 315}${execp sensors coretemp-isa-0000 | grep 'Core 0' | cut -c16-17}${color1} °C ${color}
+${font Open Sans:pixelsize=11}GPU:${color4}${goto 315}${nvidia temp}${color1} °C ${color} 
+
+${font Sans:size=13}Storage
+${font Open Sans:pixelsize=11}Root ${alignr}${color4}${fs_used /}${color} / ${color1}${fs_size}${color}
+${fs_bar 10,325 /}
+${font Open Sans:pixelsize=11}Seiska $alignr}${color4}${fs_used /media/Seiska}${color} / ${color1}${fs_size /media/Seiska}${color}
+${fs_bar 10,325 /media/Seiska}
+${font Open Sans:pixelsize=11}SSD ${alignr}${color4}${fs_used /media/SSD}${color} / ${color1}${fs_size /media/SSD}${color}
+${fs_bar 10,325 /media/SSD}
+${font Open Sans:pixelsize=11}640gb ${alignr}${color4}${fs_used /media/640gb}${color} / ${color1}${font Open Sans:pixelsize=11}${fs_size /media/640gb}${color}
+${fs_bar 10,325 /media/640gb}
+${font Open Sans:pixelsize=11}3tb ${alignr}${color4}${fs_used /media/3tb}${color} / ${color1}${fs_size /media/3tb}${color}
+${fs_bar 10,325 /media/3tb}
