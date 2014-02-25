@@ -13,8 +13,9 @@ alias rclua="vim /home/rolle/.config/awesome/rc.lua"
 alias winesteam="/home/rolle/Desktop/Steam.desktop"
 alias hiiri="xinput --set-prop 8 'Device Accel Constant Deceleration'"
 alias dc4g="sudo mmcli -m 0 --simple-disconnect"
-alias 4g="sudo ~/script/4gtikku.sh"
+alias 4g="sudo mmcli -m 0 --simple-connect="apn=internet.saunalahti,ip-type=ipv4""
 alias firefox-nightly="firefox-nightly -p Nightly"
+alias thecat="LANG=en_US.UTF-8 ~/script/thecat.sh"
 
 # Autostart X
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
@@ -63,7 +64,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+#plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 

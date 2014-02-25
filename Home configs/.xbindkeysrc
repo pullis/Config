@@ -81,7 +81,7 @@
 "urxvt"
   Alt+Mod2 + Return
 
-"firefox-aurora"
+"firefox-beta-bin"
  Alt+F7
 
 "urxvt -e /home/rolle/sript/panel"
@@ -93,5 +93,6 @@
 "firefox-nightly -p Nightly"
 Alt+F8
 
-
+"chromium"
+Alt+F9
 

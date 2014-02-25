@@ -10,6 +10,14 @@
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible			" 
 
+execute pathogen#infect()
+
+" Set Master file to read only
+"set nomodifiable
+
+" Automagically change your current directory to match the location of the current file
+set autochdir
+
 " Set encoding
 set encoding=utf-8
 
@@ -36,6 +44,11 @@ filetype indent plugin on
 " crashes.
 set hidden
 
+" Modelines have historically been a source of security vulnerabilities. As
+" such, it may be a good idea to disable them and use the securemodelines
+" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
+set nomodeline
+
 " Better command-line completion
 set wildmenu
 
@@ -60,6 +73,11 @@ set ruler
 " dialogue asking if you wish to save changed files.
 set confirm
 
+" Stop certain movements from always going to the first character of a line.
+" " While this behaviour deviates from that of Vi, it does what most users
+" " coming from other editors would expect.
+set nostartofline
+
 " Use visual bell instead of beeping when doing something wrong
 " set visualbell
 
@@ -80,10 +98,13 @@ set tabstop=4
 " Don't create backups & swap files
 set nobackup 
 set nowritebackup
-set noswapfile
+"set noswapfile
 
 " Backup directory
 "set backupdir=~/.vim/backup 
+
+" Set working directory
+set directory=/home/rolle/.vim/swap
 
 " Save x lines of command history
 set history=50
@@ -92,8 +113,9 @@ set history=50
 set title 
 
 " Set dark backround
-set background=dark 
+"set background=dark 
 
+" How many times you can use undo 
 set undolevels=200
 
 " Determines the number of context lines you would like to see above and below
@@ -103,8 +125,53 @@ set scrolloff=5
 " Enable filetype-specific indenting
 filetype indent on
 
+" required for vundle
+filetype plugin indent on 
+
+" required for vundle
+filetype off 
+
+"------------------------------------------------------------------------
+" Plugins & colorscheme
+"------------------------------------------------------------------------
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+" alternatively, pass a path where Vundle should install bundles
+"let path = '~/some/path/here'
+"call vundle#rc(path)i
+
+" let Vundle manage Vundle, required
+Bundle 'gmarik/vundle'
+
+" Plugins
+
+" Display tags of the current file 
+Bundle 'majutsushi/tagbar'
+
+" A tree explorer plugin for Vim
+Bundle 'scrooloose/nerdtree'
+autocmd vimenter * if !argc() | NERDTree | endif " Start NERDtree if no files specified at start
+
+" one colorscheme pack to rule them all!
+Bundle 'flazz/vim-colorschemes'
+
+" Better defaults
+Bundle 'tpope/vim-sensible'
+
+" lean & mean statusbar for vim
+Bundle 'bling/vim-airline'
+let g:airline#extensions#tabline#enabled = 1
+
+" A code-completion engine for Vim
+Bundle 'Valloric/YouCompleteMe'
+
 " Vim colorsheme
-colorscheme molokai
+"colorscheme molokai
+"colorscheme jellybeans
+"colorscheme distinguished
+colorscheme kellys
 
 "-----------------------------------------------------------------------
 "liikkuminen, etsiminen ja hakutulokset
