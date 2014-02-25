@@ -1,10 +1,13 @@
 "----------------------------------------------------------------------
 "yleiset asetukset
 "----------------------------------------------------------------------
+" Type :BundleInstall to use plugins (YCM needs to compile ycm_support_libs)
 
-" Mostly from Vim example configuration
-
-" Vim Colorscheme ~/vim kansioon
+" mkdir ycm_build
+" cd ycm_build
+" cmake -G "Unix Makefiles" . ~/.vim/bundle/YouCompleteMe/cpp
+" make ycm_support_libs
+"----------------------------------------------------------------------
 
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
