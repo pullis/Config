@@ -14,20 +14,20 @@ fi
 
 setxkbmap fi
 #xrandr "--output DVI-D-0 --primary" 
-xinput --set-prop 8 'Device Accel Constant Deceleration' 3 &
+#xinput --set-prop 8 'Device Accel Constant Deceleration' 3 &
 xsetroot -cursor_name left_ptr  
 xset +fp /usr/share/fonts/local 
 xset fp rehash                  
 xset m 1 0
 
 # Automaattisesti käynnistettävät ohjelmat
-mpd &
-dropboxd &
-compton --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --unredir-if-possible --shadow-exclude "! name~=''" --config ~/.compton.conf -b &
-/home/rolle/script/taustaa.sh &
-/home/rolle/script/conky.sh &
-xbindkeys &
-/usr/bin/xscreensaver -no-splash &
+#mpd &
+#dropboxd &
+#compton --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --unredir-if-possible --shadow-exclude "! name~=''" --config ~/.compton.conf -b &
+#/home/rolle/script/taustaa.sh &
+#xbindkeys &
+#/usr/bin/xscreensaver -no-splash &
+#numlockx &
 #sxhkd &  
 #conky &
 #pidgin &
@@ -37,9 +37,9 @@ xbindkeys &
 #exec gnome-session
 #exec startkde
 #exec startxfce4
-exec awesome 
+#exec awesome 
 #exec enlightenment_start
-#exec i3 
+exec i3 
 #exec cinnamon-session
 #exec startlxde
 #exec mate-session
@@ -48,7 +48,7 @@ exec awesome
 #exec xmonad
 #exec bspwm
 
-#====BSPWM lisä asetukset====#
+#====BSPWM vanha käynnistys ====#
 
 #[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 #mkfifo "$PANEL_FIFO"

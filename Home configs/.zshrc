@@ -6,7 +6,7 @@ export BROWSER='firefox-beta-bin'
 
 #Alias
 
-alias osu='/opt/osu/osulauncher ao=alsa'
+alias osu='/opt/osu/osulauncher'
 alias trc="transmission-remote-cli"
 alias td="transmission-daemon"
 alias killtd="killall transmission-daemon"
@@ -15,11 +15,10 @@ alias winesteam="/home/rolle/Desktop/Steam.desktop"
 alias hiiri="xinput --set-prop 8 'Device Accel Constant Deceleration'"
 alias dc4g="sudo mmcli -m 0 --simple-disconnect"
 alias 4g="sudo mmcli -m 0 --simple-connect="apn=internet.saunalahti,ip-type=ipv4""
-alias firefox-nightly="firefox-nightly -p Nightly"
 alias thecat="LANG=en_US.UTF-8 ~/script/thecat.sh"
 
 # Autostart X
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+#[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -65,11 +64,24 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-#plugins=(git)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# Colored man pages
+man() {
+    env LESS_TERMCAP_mb=$'\E[01;31m' \
+    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    LESS_TERMCAP_so=$'\E[38;5;246m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
+    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+    man "$@"
+}
+
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -84,6 +96,3 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-
-alias android-connect="mtpfs -o allow_other /media/GalaxyS"
-alias android-disconnect="fusermount -u /media/GalaxyS"
