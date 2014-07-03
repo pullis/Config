@@ -2,7 +2,11 @@
 ZSH=$HOME/.oh-my-zsh
 
 export EDITOR='vim'
-export BROWSER='firefox-beta-bin'
+export BROWSER='firefox-nightly'
+
+#export GTK_IM_MODULE=ibus
+#export XMODIFIERS=@im=ibus
+#export QT_IM_MODULE=ibus
 
 #Alias
 
@@ -13,12 +17,14 @@ alias killtd="killall transmission-daemon"
 alias rclua="vim /home/rolle/.config/awesome/rc.lua"
 alias winesteam="/home/rolle/Desktop/Steam.desktop"
 alias hiiri="xinput --set-prop 8 'Device Accel Constant Deceleration'"
-alias dc4g="sudo mmcli -m 0 --simple-disconnect"
-alias 4g="sudo mmcli -m 0 --simple-connect="apn=internet.saunalahti,ip-type=ipv4""
-alias thecat="LANG=en_US.UTF-8 ~/script/thecat.sh"
+alias dc4g="sudo mmcli -m 0 --simple-disconnect && sudo ip link set enp2s0 up"
+alias 4g="sudo ip link set enp2s0 down && sudo mmcli -m 0 --simple-connect="apn=internet.saunalahti,ip-type=ipv4""
+alias thecat="LANG=en_US.UTF-8 ~/scripts/thecat.sh"
+alias diskinfo="LANG=en_US.UTF-8 matepalimpsest & "
+alias sgs="sudo go-mtpfs --allow-other=true /mnt/sgs"
 
 # Autostart X
-#[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,7 +55,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_CORRECTION="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+ COMPLETION_WAITING_DOTS="true"
 
 # Uncomment following line if you want to disable marking untracked files under
 # VCS as dirty. This makes repository status check for large repositories much,

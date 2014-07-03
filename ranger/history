@@ -1,0 +1,43 @@
+cd /media/3tb/Anime, Manga & OST/
+cd /media/640gb/
+search amai
+cd /media/3tb/Visual Novels/
+open_with urxvt
+open_with wine
+search hen
+cd /opt/osu/game/
+open_with osu
+open_with feh
+open_with feh -f
+cd Kuvat/
+open_with file-roller
+shell mv 1.jpg
+mv
+e
+rename 216586.0.jpg
+rename .fuse_hidden00002b5600000001
+cd
+search hentai
+shell !
+shell 
+cd /opt/osu/game/Replays/
+sort atime
+search rinne
+search lagra
+open_with vlc
+search for you
+search roz
+open_with gwenview
+open_with mcomix
+open_with 
+delete
+open_with feh -F -z
+open_with feh -F -z -r -D 5
+open_with feh -F -z -r -D 5 "$@"
+open_with feh -F -z -r -D 5 
+
+cd /media/3tb/ARCH/Backups/.kuvat/nsfw/
+open_with feh -F -z -D 5 
+find 
+open_with feh -F
+open_with feh -F -z -D 5 q
