@@ -1,8 +1,6 @@
 "----------------------------------------------------------------------
-"yleiset asetukset
+" Yleiset asetukset
 "----------------------------------------------------------------------
-
-" Mostly from Vim example configuration
 
 " Vim Colorscheme ~/vim kansioon
 
@@ -102,6 +100,16 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+" Highlight searches
+set hlsearch
+set incsearch
+
+" Use case insensitive search, except when using capital letters
+set ignorecase
+set smartcase
+set gdefault
+set showmatch
+
 " Improves smoothness of scrolling when there are multiple windows and the terminal does not support a scrolling region
 set ttyfast
 
@@ -115,8 +123,7 @@ set undofile
 set showmode
 
 " When on, lines longer than the width of the window will wrap and displaying continues on the next line. 
-" colorcolumn shows colored column at x characters so you can see when you
-" write too long line of code
+" colorcolumn shows colored column so you can see when you write too long line of code
 set wrap
 set textwidth=79
 set formatoptions=qrn1
@@ -135,12 +142,6 @@ set history=50
 
 " enable setting title
 set title 
-
-" Save a file with elevated priviledges when you forgot to use sudo
-" :w !sudo tee %
-
-" Set dark backround
-" set background=dark 
 
 " How many times you can use undo 
 set undolevels=200
@@ -185,7 +186,8 @@ Plugin 'tpope/vim-sensible'
 " lean & mean statusbar for vim
 Plugin 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline_section_b = '%{strftime("%R")}'
+let g:airline_section_y = 'BN: %{bufnr("%")}'
 
 " A code-completion engine for Vim
 Plugin 'Valloric/YouCompleteMe'
@@ -197,8 +199,8 @@ Plugin 'mileszs/ack.vim'
 " completion needs (:help ins-completion).
 Plugin 'ervandew/supertab'
 
-"
-
+" perl syntax & helper files
+Plugin 'vim-perl/vim-perl'
 
 call vundle#end() 
 
@@ -216,24 +218,14 @@ colorscheme twilight256
 " colorscheme mirodark
 
 "-----------------------------------------------------------------------
-"liikkuminen, etsiminen, hakutulokset ja näppäimet
+" Keybinds
 "-----------------------------------------------------------------------
 
-" Highlight searches (use <C-L> to temporarily turn off highlighting; see the
-" mapping of <C-L> below)
-set hlsearch
-set incsearch
-
-" Use case insensitive search, except when using capital letters
-set ignorecase
-set smartcase
-set gdefault
-set showmatch
-
 " Higlight current line & set highlight color
- set nocursorline
-" hi CursorLine term=none cterm=none ctermbg=3
+set nocursorline
+"hi CursorLine term=none cterm=none ctermbg=3
 
+" Takes effect only on gvim
 set guioptions-=T                " poista työkalurivi näkyvistä
 set guioptions-=r                " poista vierityspalkki näkyvistä
 set guioptions-=e                " poista välilehdet näkyvistä
@@ -253,12 +245,15 @@ vnoremap <F1> <ESC>
 " open new vertical window
 nnoremap <leader>w <C-w>v<C-w>l
 
-" Commands to move around split screens
+" Commands to move around split screens (ctrl + hjkl)
 nnoremap <C-h> <C-w>h " right window
 nnoremap <C-j> <C-w>j " bottom window 
 nnoremap <C-k> <C-w>k " left window
 nnoremap <C-l> <C-w>l " top window
 
+" Switch between tabs
+"noremap <><left> :tabprevious<CR>
+"noremap <><right> :tabnext<CR>
+
 " Muut
-nnoremap <F3> :NERDTree 
 nnoremap <leader>a :Ack

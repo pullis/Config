@@ -12,29 +12,34 @@ set hlfind
 set findcase=smart
 
 " Remember X lines of command history
-set history=50
+set history=80
 
 " Set wildmode to show completions as you type
 set wildmode=list:longest,full
 
-" Enable arrow keys on site 
+" Enable some keys on site 
 set passkeys+=bakabt.me:<Up><Down><Left><Right>
+set passkeys+=fakku.net:<Up><Down><Left><Right>
+set passkeys+=youtube.com:<Up><Down><Left><Right>
 
-"Enable Pass Through mode on site 
-autocmd LocationChange google.com,youtube.fi,youtube.com :normal! <C-z>
+
+" Enable Pass Through mode on site 
+"autocmd LocationChange youtube.fi,youtube.com :normal! <C-z>
 
 " Keybinds
-map q :quit<CR>
-map d <CR>
 set defsearch=duckduckgo
+map c <CR>
+map d <CR>
+map D :downloads <CR>
+map q :quit<CR>
 map m :tabprevious<CR>
 map , :tabnext<CR>
 map z :back <CR>
 map x :forward <CR>
-map <C-t> :tabopen about:newtab <CR>
+map <C-t> :tabopen about:home <CR>
 
 " Clear all highlighting
-map <.><space> :nohlfind <CR>
+map <c><space> :nohlfind <CR>
 
 " Select all
 map -b <C-a> <pass-next-key><C-a>
@@ -46,4 +51,7 @@ map -b <C-c> <pass-next-key><C-c>
 " Paste
 map -b <C-v> <pass-next-key><C-v>
 imap -b <C-v> <pass-next-key><C-v>
+
+
+
 
