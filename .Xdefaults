@@ -1,78 +1,103 @@
-## .Xdefaults
+## .Xdefaults ##
 
-#xvt*.transparent: true
-#! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
-#URxvt*.shading: 110
-
+## Transparency 
 #urxvt*depth: 32
 #urxvt*background: rgba:0000/0000/0200/c800
-URxvt.geometry: 130x35
 
 URxvt*termname: rxvt-256color
 URxvt.imLocale: fi_FI.UTF-8
-URxvt*font: xft:gohufont:pixelsize=12:antialias=true:hinting=true 
-    URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=11:antialias=true:hinting=true
-    URxvt.url-launcher:      /usr/bin/firefox-aurora
-    URxvt.matcher.button:   1
-    URxvt.urlLauncher:  xdg-open
-    URxvt.matcher.button:   1
-    URxvt.xftAntialias: true
-    URxvt.perl-ext-common:  default,tabbedex
-    URxvt.rotate-colors.files: ~/.Xresources,~/light.txt,~/dark.txt
-    URxvt.keysym.M-C-n:   perl:rotate-colors:next
-    URxvt.keysym.M-C-p:   perl:rotate-colors:prev
-    URxvt.perl-lib /home/rolle/urxvt-perls/
-    URxvt.scrollstyle:  plain
-    URxvt.scrollBar: false   
-    URxvt.secondaryScreen : true
-    URxvt.scrollTtyOutput   :   false
-    URxvt.scrollWithBuffer  :   true
-    URxvt.scrollTtyKeypress :   true
-#    URxvt.tabbed.tabbar-fg: 15
-#    URxvt.tabbed.tabbar-bg: 0
-    URxvt.tabbed.tab-fg:    15
-    URxvt.tabbed.tab-bg:    8
-    URxvt.cursorBlink:  true
-    URxvt.cursorUnderline:  true
+#URxvt.font: -*-tamzen-medium-*-*-*-18-*-*-*-*-*-*-*
+URxvt*font: xft:Dejavu Sans Mono:pixelsize=14 
+URxvt.boldFont:
+URxvt.xftAntialias: true
+URxvt.geometry: 135x22
+URxvt.hinting: true
 
-!Font
-#URxvt*font:             	-*-tamsyn-medium-r-normal-*-12-87-100-100-c-60-iso8859-1
-#URxvt*boldFont:         	-*-tamsyn-bold-r-normal-*-12-87-100-100-c-60-iso8859-1
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+URxvt.colorUL: #4682B4
 
-URxvt*background: #2C2C2C
-URxvt*foreground: #979797
+## Increase/decrease font width 
+#URxvt.letterSpace: -3
 
-!! black dark/light
-*color0: #073642
-*color8: #002b36
+URxvt.perl-ext-common: default,matcher,osc-xterm-clipboard
+URxvt.scrollstyle:  plain
+URxvt.scrollBar: false   
+URxvt*savelines: 65535
 
-!! red dark/light
-*color1: #dc322f
-*color9: #cb4b16
+URxvt.secondaryScreen : true
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
 
-!! green dark/light
-*color2: #859900
-*color10: #586e75
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: true
 
-!! yellow dark/light
-*color3: #b58900
-*color11: #657b83
+! Solarized color scheme for the X Window System
+!
+! http://ethanschoonover.com/solarized
 
-!! blue dark/light
-*color4: #268bd2
-*color12: #839496
+! Common
 
-!! magenta dark/light
-*color5: #d33682
-*color13: #6c71c4
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
 
-!! cyan dark/light
-*color6: #2aa198
-*color14: #93a1a1
+! Dark
 
-!! white dark/light
-*color7: #eee8d5
-*color15: #fdf6e3
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
 
+! Light
+
+! #define S_base03        #fdf6e3
+! #define S_base02        #eee8d5
+! #define S_base01        #93a1a1
+! #define S_base00        #839496
+! #define S_base0         #657b83
+! #define S_base1         #586e75
+! #define S_base2         #073642
+! #define S_base3         #002b36
+
+! To only apply colors to your terminal, for example, prefix
+! the color assignment statement with its name. Example:
+!
+ URxvt*background:            S_base03
+
+*background:              S_base03
+*foreground:              S_base0
+*fading:                  40
+*fadeColor:               S_base03
+*cursorColor:             S_base1
+*pointerColorBackground:  S_base01
+*pointerColorForeground:  S_base1
+
+*color0:                  S_base02
+*color1:                  S_red
+*color2:                  S_green
+*color3:                  S_yellow
+*color4:                  S_blue
+*color5:                  S_magenta
+*color6:                  S_cyan
+*color7:                  S_base2
+*color9:                  S_orange
+*color8:                  S_base03
+*color10:                 S_base01
+*color11:                 S_base00
+*color12:                 S_base0
+*color13:                 S_violet
+*color14:                 S_base1
+*color15:                 S_base3
 
 
