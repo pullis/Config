@@ -1,42 +1,78 @@
+" #################### "
+"  PENTADACTYL CONFIG  "
+" #################### "
+
 colorscheme solarized_light
 
-" default pentadactyl gui + toolbar
-" set guioptions+=T
+" Define when the tab bar is visible [always,multitab,never]
+set showtabline=never
 
 " Follow hints only when you press enter
 set followhints=1
 
-" Find & highlight as you type
+" Show the first match for a find pattern as it is typed
 set incfind
+
+" Highlight previous find pattern matches
 set hlfind
+
+" Case is significant when capital letters are typed
 set findcase=smart
 
-" Remember X lines of command history
-set history=80
+" Maximum number of Ex commands and find patterns to store
+" in the command-line history (default 500)
+"set history=80
 
 " Set wildmode to show completions as you type
 set wildmode=list:longest,full
 
-" Enable some keys on site 
-set passkeys+=bakabt.me:<Up><Down><Left><Right>
-set passkeys+=fakku.net:<Up><Down><Left><Right>
-set passkeys+=youtube.com:<Up><Down><Left><Right>
+" Set default searchengine 
+set defsearch=duckduckgo
 
+" All key events for keys listed in the corresponding value are passed through 
+" directly to firefox, and are not processed by Pentadactyl in any way
+set passkeys+=:<Up><Down><Left><Right><space>
 
 " Enable Pass Through mode on site 
 "autocmd LocationChange youtube.fi,youtube.com :normal! <C-z>
 
-" Keybinds
-set defsearch=duckduckgo
-map c <CR>
-map d <CR>
+" #################### "
+"     KEYBINDINGS      "
+" #################### "
+
+" Bigger steps on h,j,k,l
+map -b h 3h
+map -b j 3j
+map -b k 3k
+map -b l 3l
+
+" Disable keybinds
+"unmap c 
+"unmap d 
+
+" Show downloads
 map D :downloads <CR>
+
+" Show list of tabs
+map <C-b> :buffers
+
+" Close tab
 map q :quit<CR>
+
+" Next & previous tab
 map m :tabprevious<CR>
 map , :tabnext<CR>
+
+" Next & previous history
 map z :back <CR>
 map x :forward <CR>
-map <C-t> :tabopen about:home <CR>
+
+" Print current page
+map <C-p> :ha <CR>
+map p <CR>
+
+" New tab page
+map <C-t> :tabopen about:newtab <CR>
 
 " Clear all highlighting
 map <c><space> :nohlfind <CR>
