@@ -1,5 +1,4 @@
 # Conky settings #
-# This is customized version of http://la-manoue.deviantart.com/art/Dark-Mixed-Conky-on-Cinnamon-396225134 
 background no
 update_interval 1
 
@@ -32,7 +31,7 @@ border_inner_margin 0
 border_outer_margin 0
 
 minimum_size 520 600
-maximum_width 520 600
+maximum_width 520
 
 alignment tr
 gap_x -20
@@ -72,29 +71,29 @@ ${font Play:normal:size=8}${voffset 0}${goto 120}${color1}CPU 1 ${alignr 330}${c
 ${font Play:normal:size=8}${voffset 2}${goto 120}${color1}CPU 2${alignr 330}${color1}${cpu cpu1}%
 ${font Play:normal:size=8}${voffset 2}${goto 120}${color1}CPU 3${alignr 330}${color1}${cpu cpu2}%
 ${font Play:normal:size=8}${voffset 2}${goto 120}${color1}CPU 4${alignr 330}${color1}${cpu cpu3}%
-${goto 23}${voffset 19}${font Play:normal:size=8}${color1}${top name 1}${alignr 300}${top cpu 1}%
-${goto 23}${font Play:normal:size=8}${color1}${top name 2}${alignr 300}${top cpu 2}%
-${goto 23}${font Play:normal:size=8}${color1}${top name 3}${alignr 300}${top cpu 3}%
+${goto 23}${voffset 20}${font Play:normal:size=8}${color1}${top name 1}${alignr 306}${top cpu 1}%
+${goto 23}${font Play:normal:size=8}${color1}${top name 2}${alignr 306}${top cpu 2}%
+${goto 23}${font Play:normal:size=8}${color1}${top name 3}${alignr 306}${top cpu 3}%
 ${font Michroma:size=15}${color0}${offset 20}${voffset -105}CPU 
-${font Michroma:size=10}${color0}${offset 410}${voffset 125}MEMORY
-${goto 324}${voffset 3}${font Play:normal:size=8}${color1}${top_mem name 1}${alignr 40}${top_mem mem 1}%
+${font Michroma:size=10}${color0}${offset 410}${voffset 120}MEMORY
+${goto 324}${voffset 5}${font Play:normal:size=8}${color1}${top_mem name 1}${alignr 40}${top_mem mem 1}%
 ${goto 324}${font Play:normal:size=8}${color1}${top_mem name 2}${alignr 40}${top_mem mem 2}%
 ${goto 324}${font Play:normal:size=8}${color1}${top_mem name 3}${alignr 40}${top_mem mem 3}%
-${font Play:normal:size=8}${voffset 15}${goto 348}${color1}SWAP${alignr 40}${color1}${swap} / ${color1}${swapmax}
+${font Play:normal:size=8}${voffset 10}${goto 348}${color1}SWAP${alignr 40}${color1}${swap} / ${color1}${swapmax}
 ${font Play:normal:size=8}${voffset 2}${goto 348}${color1}RAM ${alignr 40}${color1}${mem} / ${color1}${memmax}
-${font Play:normal:size=8}${goto 20}${voffset -47}Root${color1}${alignr 310}${fs_used /} / ${fs_size /}
+${font Play:normal:size=8}${goto 20}${voffset -42}Root${color1}${alignr 310}${fs_used /} / ${fs_size /}
 ${font Play:normal:size=8}${goto 20}${voffset 0}Home${alignr 310}${color1}${fs_used /home} / ${fs_size /home}
 ${font Play:normal:size=8}${goto 20}${voffset 0}Data${alignr 310}${color1}${fs_used /media/3tb} / ${fs_size /media/3tb}
 ${font Play:normal:size=8}${goto 20}${voffset 0}WD Drive${alignr 310}${color1}${fs_used /media/640gb} / ${fs_size /media/640gb}
 ${font Play:normal:size=8}${goto 20}${voffset 0}Windows 7${alignr 310}${color1}${fs_used /media/wintoosa} / ${fs_size /media/wintoosa}
-${font Michroma:size=10}${color0}${goto 21}${voffset -85}HARD  DRIVE
-${font Michroma:size=10}${color0}${voffset 93}${goto 340}INTERNET  INFO${color1}
+${font Michroma:size=10}${color0}${goto 21}${voffset -95}HARD  DRIVE
+${font Michroma:size=10}${color0}${voffset 102}${goto 340}INTERNET  INFO${color1}
 # |--enp2s0
-${font Play:bold:size=8}${goto 340}${voffset 10}Local IP${goto 400}${addr enp2s0}
+${font Play:bold:size=8}${goto 340}${voffset 15}Local IP${goto 400}${addr enp2s0}
 ${font Play:bold:size=8}${goto 340}${voffset 1}Public IP${goto 400}${execi 3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}
-${font Play:normal:size=8}${color1}${goto 340}${voffset 17}Up${goto 400}${color1}${totalup enp2s0} / ${color2}${upspeed enp2s0}
+${font Play:normal:size=8}${color1}${goto 340}${voffset 13}Up${goto 400}${color1}${totalup enp2s0} / ${color2}${upspeed enp2s0}
 ${font Play:normal:size=8}${goto 340}${color1}Down${goto 400}${color1}${totaldown enp2s0} / ${color2}${downspeed enp2s0}${color1}
 ${font Michroma:bold:size=14}${alignr 219}${voffset 50}${color0}${time %a} ${color0}${time %x}
-${font Michroma:size=24}${goto 198}${color1}${voffset -4}${time %H}:${time %M}${font Michroma:size=8}:${time %S}
-${font Michroma:bold:size=11}${color0}${voffset 30}${alignr 165}${sysname} ${exec uname -r | cut -c\1,2,3,4,5,6,7,8}  ${machine}
-${font Play:normal:size=8}${goto 200}Uptime${color1}${alignr 220}${uptime_short}
+${font Michroma:size=24}${goto 217}${color1}${voffset -4}${time %H}:${time %M}${font Michroma:size=8}:${time %S}
+${font Michroma:bold:size=11}${color0}${voffset 30}${goto 120}${sysname} ${exec uname -r | cut -c\1,2,3,4,5,6,7,8}  ${machine}
+${font Play:normal:size=8}${goto 219}Uptime${color1}${alignr 220}${uptime_short}

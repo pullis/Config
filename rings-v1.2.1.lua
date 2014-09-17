@@ -15,9 +15,9 @@ Changelog:
 + v1.1 -- Added options for the starting angle of the rings, and added the "max" variable, to allow for variables that output a numerical value rather than a percentage (29.09.2009)
 + v1.0 -- Original release (28.09.2009)
 
-        arg=conky_parse("${if_up enps20}wlan0${else}enps20${endif}"),
+        arg=conky_parse("${if_up enp2s0}wlan0${else}enp2s0${endif}"),
         fg_colour=0xf0651f,
-        fg_colour=conky_parse("${if_up enps20}wlan0${else}enps20${endif}"),
+        fg_colour=conky_parse("${if_up enp2s0}wlan0${else}enp2s0${endif}"),
         conky_parse("${cpu}")
         name=conky_parse("${acpitemp}"),
 ]]
@@ -76,7 +76,7 @@ settings_table = {
         bg_alpha=0.8,
         fg_colour=0xAAF334,
         fg_alpha=0.8,
-        x=205, y=117,
+        x=200, y=120,
         radius=86,
         thickness=13,
         start_angle=0,
@@ -90,7 +90,7 @@ settings_table = {
         bg_alpha=0.7,
         fg_colour=0xAAF334,
         fg_alpha=0.8,
-        x=205, y=117,
+        x=200, y=120,
         radius=71,
         thickness=12,
         start_angle=0,
@@ -104,7 +104,7 @@ settings_table = {
         bg_alpha=0.6,
         fg_colour=0xAAF334,
         fg_alpha=0.8,
-        x=205, y=117,
+        x=200, y=120,
         radius=57,
         thickness=11,
         start_angle=0,
@@ -118,7 +118,7 @@ settings_table = {
         bg_alpha=0.5,
         fg_colour=0xAAF334,
         fg_alpha=0.8,
-        x=205, y=117,
+        x=200, y=120,
         radius=44,
         thickness=10,
         start_angle=0,
@@ -225,13 +225,13 @@ settings_table = {
     {
         name='downspeedf',
         arg='enp2s0',
-        max=1150,
+        max=1000,
         bg_colour=0xdddddd,
         bg_alpha=0.8,
         fg_colour=0xAAF334,
         fg_alpha=0.8,
         x=325, y=376,
-        radius=45,
+        radius=44,
         thickness=12,
         start_angle=180,
         end_angle=360
@@ -239,13 +239,13 @@ settings_table = {
     {
         name='upspeedf',
         arg='enp2s0',
-        max=120,
+        max=100,
         bg_colour=0xdddddd,
         bg_alpha=0.6,
         fg_colour=0xAAF334,
         fg_alpha=0.8,
         x=325, y=376,
-        radius=33,
+        radius=32,
         thickness=8,
         start_angle=180,
         end_angle=360
@@ -446,7 +446,7 @@ function disk_watch()
         settings_table[12]['fg_colour']=crit
     end
   end
---[[
+
 -- Contrôle de la température
 function temp_watch()
 
@@ -463,14 +463,14 @@ function temp_watch()
         settings_table[1]['fg_colour']=crit
     end
 end
---]]
+
 -- Contrôle de l'interface active
 function iface_watch()
 
     iface=conky_parse("${if_existing /proc/net/route enp2s0}enp2s0${else}wlan0${endif}")
 
     settings_table[13]['arg']=iface
-  --  settings_table[14]['arg']=iface --clock
+  --  settings_table[14]['arg']=iface
 end
 
 function conky_draw_bg()
@@ -496,7 +496,7 @@ function conky_draw_bg()
 end
 
 function conky_main()
---    temp_watch()
+  --  temp_watch()
     disk_watch()
     iface_watch()
     conky_ring_stats()
