@@ -76,7 +76,7 @@ settings_table = {
         bg_alpha=0.8,
         fg_colour=0xAAF334,
         fg_alpha=0.8,
-        x=200, y=120,
+        x=205, y=117,
         radius=86,
         thickness=13,
         start_angle=0,
@@ -90,7 +90,7 @@ settings_table = {
         bg_alpha=0.7,
         fg_colour=0xAAF334,
         fg_alpha=0.8,
-        x=200, y=120,
+        x=205, y=117,
         radius=71,
         thickness=12,
         start_angle=0,
@@ -104,7 +104,7 @@ settings_table = {
         bg_alpha=0.6,
         fg_colour=0xAAF334,
         fg_alpha=0.8,
-        x=200, y=120,
+        x=205, y=117,
         radius=57,
         thickness=11,
         start_angle=0,
@@ -118,7 +118,7 @@ settings_table = {
         bg_alpha=0.5,
         fg_colour=0xAAF334,
         fg_alpha=0.8,
-        x=200, y=120,
+        x=205, y=117,
         radius=44,
         thickness=10,
         start_angle=0,
@@ -203,38 +203,52 @@ settings_table = {
         fg_colour=0xAAF334,
         fg_alpha=0.8,
         x=220, y=310,
-        radius=16,
+        radius=24,
+        thickness=10,
+        start_angle=0,
+        end_angle=240
+    },
+    {
+        name='fs_used_perc',
+        arg='/media/wintoosa',
+        max=100,
+        bg_colour=0xdddddd,
+        bg_alpha=0.4,
+        fg_colour=0xAAF334,
+        fg_alpha=0.8,
+        x=220, y=310,
+        radius=12,
         thickness=10,
         start_angle=0,
         end_angle=240
     },
     {
         name='downspeedf',
-        arg='',
-        max=2000,
+        arg='enp2s0',
+        max=1150,
         bg_colour=0xdddddd,
         bg_alpha=0.8,
         fg_colour=0xAAF334,
         fg_alpha=0.8,
-        x=305, y=376,
-        radius=30,
+        x=325, y=376,
+        radius=45,
         thickness=12,
         start_angle=180,
-        end_angle=420
+        end_angle=360
     },
     {
         name='upspeedf',
-        arg='',
-        max=200,
+        arg='enp2s0',
+        max=120,
         bg_colour=0xdddddd,
         bg_alpha=0.6,
         fg_colour=0xAAF334,
         fg_alpha=0.8,
-        x=305, y=376,
-        radius=18,
+        x=325, y=376,
+        radius=33,
         thickness=8,
         start_angle=180,
-        end_angle=420
+        end_angle=360
     },
 --[[    {
         name='time',
@@ -366,7 +380,7 @@ function conky_ring_stats()
 
 	if update_num>5 then
 	    for i in pairs(settings_table) do
-                display_temp=temp_watch()
+--                display_temp=temp_watch()
 		setup_rings(cr,settings_table[i])
 	    end
 	end
@@ -421,8 +435,18 @@ function disk_watch()
     else
         settings_table[11]['fg_colour']=crit
     end
-  end
+    
+    disk=tonumber(conky_parse("${fs_used_perc /media/wintoosa}"))
 
+    if disk<warn_disk then
+        settings_table[12]['fg_colour']=normal
+    elseif disk<crit_disk then
+        settings_table[12]['fg_colour']=warn
+    else
+        settings_table[12]['fg_colour']=crit
+    end
+  end
+--[[
 -- Contrôle de la température
 function temp_watch()
 
@@ -439,14 +463,14 @@ function temp_watch()
         settings_table[1]['fg_colour']=crit
     end
 end
-
+--]]
 -- Contrôle de l'interface active
 function iface_watch()
 
-    iface=conky_parse("${if_existing /proc/net/route enps20}enps20${endif}")
+    iface=conky_parse("${if_existing /proc/net/route enp2s0}enp2s0${else}wlan0${endif}")
 
-    settings_table[12]['arg']=iface
-  --  settings_table[13]['arg']=iface
+    settings_table[13]['arg']=iface
+  --  settings_table[14]['arg']=iface --clock
 end
 
 function conky_draw_bg()
@@ -472,7 +496,7 @@ function conky_draw_bg()
 end
 
 function conky_main()
-    temp_watch()
+--    temp_watch()
     disk_watch()
     iface_watch()
     conky_ring_stats()
