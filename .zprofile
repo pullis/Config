@@ -1,3 +1,2 @@
-export XDG_CONFIG_HOME="/home/rolle/.config"
-export BSPWM_SOCKET="/tmp/bspwm-socket"
-export PANEL_FIFO="/tmp/panel-fifo"
+# Force steam to minimize to tray when you close it
+export STEAM_FRAME_FORCE_CLOSE=1
