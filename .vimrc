@@ -2,8 +2,6 @@
 " Yleiset asetukset
 "----------------------------------------------------------------------
 
-" Vim Colorscheme ~/vim kansioon
-
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible			" 
@@ -12,6 +10,9 @@ execute pathogen#infect()
 
 " Set Master file to read only
 "set nomodifiable
+
+" Enable mouse
+set mouse=a
 
 " Automagically change your current directory to match the location of the current file
 set autochdir
@@ -27,19 +28,6 @@ syntax on
 " and for plugins that are filetype specific.
 " filetype indent plugin on
 
-" Vim with default settings does not allow easy switching between multiple files
-" in the same editor window. Users can use multiple split windows or multiple
-" tab pages to edit multiple files, but it is still best to enable an option to
-" allow easier switching between files.
-"
-" One such option is the 'hidden' option, which allows you to re-use the same
-" window and switch from an unsaved buffer without saving it first. Also allows
-" you to keep an undo history for multiple files when re-using the same window
-" in this way. Note that using persistent undo also lets you undo in multiple
-" files even in the same window, but is less efficient and is actually designed
-" for keeping undo history after closing Vim entirely. Vim will complain if you
-" try to quit without saving, and swap files will keep you safe if your computer
-" crashes.
 set hidden
 
 " Modelines have historically been a source of security vulnerabilities. As
@@ -52,7 +40,6 @@ set wildmenu
 
 " Complete till longest common string.
 set wildmode=list:longest
-
 
 " Show partial commands in the last line of the screen
 set showcmd
@@ -67,6 +54,15 @@ set autoindent
 " Display the cursor position on the last line of the screen or in the status
 " line of a window
 set ruler
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+\ if line("'\"") > 0 && line("'\"") <= line("$") |
+\ exe "normal! g`\"" |
+\ endif
+
+" Remember info about open buffers on close
+set viminfo^=%
 
 " Always display the status line, even if only one window is displayed
 "set laststatus=2
@@ -89,9 +85,7 @@ set nostartofline
 " set t_vb=
 
 " Display line numbers on the left
-set number 
-
-" 
+set number  
 set relativenumber  
 
 " Set tab to 4 lines instead default 8
@@ -123,28 +117,31 @@ set undofile
 set showmode
 
 " When on, lines longer than the width of the window will wrap and displaying continues on the next line. 
-" colorcolumn shows colored column so you can see when you write too long line of code
-set wrap
+" colorcolumn shows colored column 
 set textwidth=79
 set formatoptions=qrn1
 " set colorcolumn=100
 
+set ai " Auto indent
+set si " Smart indent
+set wrap " Wrap lines
+
 " Don't create backups & swap files
 set nobackup 
 set nowritebackup
-" set noswapfile
+set noswapfile
 
 " Set working directory
 " set directory=/home/rolle/.vim/swap
 
 " Save x lines of command history
-set history=50
+set history=150
 
 " enable setting title
 set title 
 
 " How many times you can use undo 
-set undolevels=200
+set undolevels=500
 
 " Determines the number of context lines you would like to see above and below
 " the cursor.
@@ -175,7 +172,7 @@ Plugin 'gmarik/vundle'
 
 " A tree explorer plugin for Vim
 Plugin 'scrooloose/nerdtree'
-autocmd vimenter * if !argc() | NERDTree | endif " Start NERDtree if no files specified at start
+"autocmd vimenter * if !argc() | NERDTree | endif " Start NERDtree if no files specified at start
 
 " one colorscheme pack to rule them all!
 Plugin 'flazz/vim-colorschemes'
@@ -185,12 +182,17 @@ Plugin 'tpope/vim-sensible'
 
 " lean & mean statusbar for vim
 Plugin 'bling/vim-airline'
+
+" Fancy statusline for airline
+let g:airline_powerline_fonts=1
+let g:airline_theme='base16'
 let g:airline#extensions#tabline#enabled = 1
+
+" Adds simple clock on lower left corner
 let g:airline_section_b = '%{strftime("%R")}'
-let g:airline_section_y = 'BN: %{bufnr("%")}'
 
 " A code-completion engine for Vim
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 " better searching 
 Plugin 'mileszs/ack.vim'
@@ -202,20 +204,28 @@ Plugin 'ervandew/supertab'
 " perl syntax & helper files
 Plugin 'vim-perl/vim-perl'
 
+" Open URI with your favorite browser
+Plugin 'tyru/open-browser.vim'
+
+" The ultimate snippet solution for Vim
+Plugin 'SirVer/ultisnips'
+
+" Show a VCS diff using Vim's sign column.
+Plugin 'mhinz/vim-signify'
+
+" Syntax highlighting for JSON
+Plugin 'leshill/vim-json'
+
+" Heuristically set buffer options
+Plugin 'tpope/vim-sleuth'
+
 call vundle#end() 
 
 "make vim use 256colors
 set t_Co=256
 
 " Vim colorsheme
-" colorscheme molokai
-" colorscheme jellybeans
-" colorscheme distinguished
-" colorscheme zenburn
-" colorscheme github
-" colorscheme codeschool
-colorscheme twilight256
-" colorscheme mirodark
+colorscheme solarized
 
 "-----------------------------------------------------------------------
 " Keybinds
@@ -233,7 +243,10 @@ set guioptions-=e                " poista välilehdet näkyvistä
 
 " Set leader key
 let mapleader = ","
+
+" Clear all highlighting
 nnoremap <leader><space> :noh<cr>
+
 nnoremap <tab> %
 vnoremap <tab> %
 
@@ -254,6 +267,3 @@ nnoremap <C-l> <C-w>l " top window
 " Switch between tabs
 "noremap <><left> :tabprevious<CR>
 "noremap <><right> :tabnext<CR>
-
-" Muut
-nnoremap <leader>a :Ack
