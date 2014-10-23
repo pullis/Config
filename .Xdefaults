@@ -1,13 +1,16 @@
-## .Xdefaults ##
+! .Xdefaults ##
 
-## Transparency 
-#urxvt*depth: 32
-#urxvt*background: rgba:0000/0000/0200/c800
+! Transparency 
+!urxvt*depth: 32
+!urxvt*background: rgba:0000/0000/0200/c800
 
 URxvt*termname: rxvt-256color
 URxvt.imLocale: fi_FI.UTF-8
-#URxvt.font: -*-tamzen-medium-*-*-*-18-*-*-*-*-*-*-*
-URxvt*font: xft:Dejavu Sans Mono:pixelsize=14 
+!URxvt.font: -*-tamzen-medium-*-*-*-18-*-*-*-*-*-*-*
+URxvt*font: xft:tewi:pixelsize=14 \
+            xft:Droid Sans Japanese:size=10:antialias=false, \
+            xft:Kochi Gothic:antialias=false
+
 URxvt.boldFont:
 URxvt.xftAntialias: true
 URxvt.geometry: 135x22
@@ -17,8 +20,8 @@ URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 URxvt.colorUL: #4682B4
 
-## Increase/decrease font width 
-#URxvt.letterSpace: -3
+! Increase/decrease font width 
+!URxvt.letterSpace: -3
 
 URxvt.perl-ext-common: default,matcher,osc-xterm-clipboard
 URxvt.scrollstyle:  plain
