@@ -81,17 +81,12 @@
 "urxvt"
   Alt+Mod2 + Return
 
-"firefox-aurora"
- Alt+F7
-
-"urxvt -e /home/rolle/sript/panel"
- Shift+F7
-
 "mpc stop"
  Alt+Mod2 + F4
 
-"firefox-nightly -p Nightly"
+"MOZ_USE_OMTC=1 firefox-aurora" # Use Off Main Thread Compositing (OMTC)
 Alt+F8
 
-
+"chromium"
+Alt+F9
 
