@@ -1,0 +1,27 @@
+PRGCMD="mmcli -m 0 --simple-connect=apn=internet.saunalahti,ip-type=ipv4"
+if [[ $UID != 0 || $EUID != 0 ]]; then
+    #echo as root to prompt for password before mm job is started
+
+    sudo echo Running program as root
+    MM=`ps aux | grep ModemManager | wc -l`
+    if [[ $MM == 1 ]]; then
+        sudo ModemManager &
+        echo "Waiting 10s for ModemManager"
+        sleep 15
+    fi
+    echo "Connecting 4G"
+    sudo ${PRGCMD}
+    sleep 5
+    echo "DHCP request"
+    sudo dhcpcd wwan0
+    ip addr show wwan0
+else
+    ${PRGCMD}
+fi
+
+disconnect()
+{
+    sudo echo "Disconnecting 4G"
+    sudo kill `ps -C ModemManager -o pid=`
+}
+
